@@ -13,8 +13,6 @@ class CreateRlCollectionBooksTable extends Migration
      */
     public function up()
     {
-
-        
         Schema::create('rl_collection_books', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
