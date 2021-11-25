@@ -18,8 +18,6 @@ class CreateRlAuthorBooksTable extends Migration
             $table->timestamps();
             $table->integer("author_id");
             $table->integer("book_id");
-            $table->foreign('book_id')->references('id')->on('books');
-            $table->foreign('author_id')->references('id')->on('book_authors');
         });
     }
 

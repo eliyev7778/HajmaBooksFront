@@ -19,7 +19,7 @@ class CreateBookAuthorsTable extends Migration
             $table->string("img");
             $table->string("name_az");
             $table->string("name_ru");
-            $table->string("name_eng");
+            $table->string("name_en");
             $table->string("name_tr");
             $table->string("name_uk");
         });

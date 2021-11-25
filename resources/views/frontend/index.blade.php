@@ -21,73 +21,31 @@
                                         data-bs-slide-to="3" aria-label="Slide 4"></button>
                             </div>
                             <div class="carousel-inner h-100">
-                                <div class="carousel-item active  h-100 ">
+                             @foreach($special as $key)
+                                <div class="carousel-item js-first-special-active h-100 ">
                                     <div class="content_container">
-                                        <h2 class="pagetop_title">back to school</h2>
-                                        <h3 class="pagetop_subtitle d-flex flex-column ">Special 50% Off
-                                            <span>for our stduent community</span>
+                                        <h2 class="pagetop_title">{{$key['books']->book_name}}</h2>
+                                        <h3 class="pagetop_subtitle d-flex flex-column ">
+                                            @lang('index.special') {{(new \App\Helper\index())->interest($key['books']->price,$key['books']->discount)}} @lang('index.discount')
+                                           <p>
+                                                        @foreach($key['category'] as $category)
+                                                         <span>
+                                                        {{$category->categorys}}
+                                                         </span>
+                                                         @endforeach
+                                           </p>
                                         </h3>
                                         <div class="pagetop_buttons d-flex justify-content-between ">
                                             <a class="get_deal_btn" href="javascript:void(0)">
-                                                Get the deal <i class="fas fa-long-arrow-alt-right"></i>
+                                                @lang('index.readMore') <i class="fas fa-long-arrow-alt-right"></i>
                                             </a>
                                             <a class="see_others" href="javascript:void(0)">
-                                                See other promos
+                                                @lang('index.otherPromos')
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="carousel-item h-100 ">
-                                    <div class="content_container">
-                                        <h2 class="pagetop_title">back to school</h2>
-                                        <h3 class="pagetop_subtitle d-flex flex-column ">Special 50% Off
-                                            <span>for our stduent community</span>
-                                        </h3>
-                                        <div class="pagetop_buttons d-flex justify-content-between  ">
-                                            <a class="get_deal_btn" href="javascript:void(0)">
-                                                Get the deal <i class="fas fa-long-arrow-alt-right"></i>
-                                            </a>
-                                            <a class="see_others" href="javascript:void(0)">
-                                                See other promos
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="carousel-item h-100 ">
-                                    <div class="content_container">
-                                        <h2 class="pagetop_title">back to school</h2>
-                                        <h3 class="pagetop_subtitle d-flex flex-column ">Special 50% Off
-                                            <span>for our stduent community</span>
-                                        </h3>
-                                        <div class="pagetop_buttons d-flex justify-content-between ">
-                                            <a class="get_deal_btn" href="javascript:void(0)">
-                                                Get the deal <i class="fas fa-long-arrow-alt-right"></i>
-                                            </a>
-                                            <a class="see_others" href="javascript:void(0)">
-                                                See other promos
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="carousel-item h-100 ">
-                                    <div class="content_container">
-                                        <h2 class="pagetop_title">back to school</h2>
-                                        <h3 class="pagetop_subtitle d-flex flex-column ">Special 50% Off
-                                            <span>for our stduent community</span>
-                                        </h3>
-                                        <div class="pagetop_buttons d-flex justify-content-between ">
-                                            <a class="get_deal_btn" href="javascript:void(0)">
-                                                Get the deal <i class="fas fa-long-arrow-alt-right"></i>
-                                            </a>
-                                            <a class="see_others" href="javascript:void(0)">
-                                                See other promos
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                             <button class="carousel-control-prev" type="button"
                                     data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -106,21 +64,26 @@
                     <div class="slider_right_continer w-100 ">
                         <div id="carouselExampleControls" class="carousel slide h-100" data-bs-ride="carousel">
                             <div class="carousel-inner w-100 h-100 ">
-                                <div class="carousel-item  w-100 h-100  active">
+                                 @foreach($best_sold as $key)
+                                <div class="carousel-item  w-100 h-100  js-first-best-sold-active">
                                     <div
                                         class="pagetop_rightslider_item d-flex flex-column align-items-center justify-content-center ">
-                                        <h2 class="right_item_title">best seller</h2>
-                                        <span class="rigth_item_excerpt">Based sales this week</span>
+                                        <h2 class="right_item_title">@lang('index.bestSeller')</h2>
+                                        <span class="rigth_item_excerpt">@lang('index.salesWeek')</span>
                                         <div class="pagetop_book_img">
-                                            <img src="./assets/images/bookd2.jpg" alt="pagetop_book"
+                                            <img src="{{$key['books']->img_front==null ? $key['books']->img_audio : $key['books']->img_front}}" alt="pagetop_book"
                                                  class="w-100 h-100 ">
                                         </div>
                                         <h2 class="pushing_clouds">
-                                            pushing clouds
+                                            {{$key['books']->book_name}}
                                         </h2>
-                                        <span class="pushing_clouds_subtitle">
-                                                adventure,science,comedy
-                                            </span>
+                                             <p>
+                                                 @foreach($key['category'] as $category)
+                                            <span class="pushing_clouds_subtitle">
+                                                {{$category->categorys}}
+                                                  </span>
+                                            @endforeach
+                                             </p>
                                         <div class="pagotop_right_price_continer">
                                             <span class="old_price"><del>60.00</del></span>
                                             <span class="new_price"> USD <span class="price_count">45.25</span>
@@ -128,50 +91,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="carousel-item   w-100 h-100 ">
-                                    <div
-                                        class="pagetop_rightslider_item d-flex flex-column align-items-center justify-content-center">
-                                        <h2 class="right_item_title">best seller</h2>
-                                        <span class="rigth_item_excerpt">Based sales this week</span>
-                                        <div class="pagetop_book_img">
-                                            <img src="./assets/images/boooks.jpg" alt="pagetop_book"
-                                                 class="w-100 h-100 ">
-                                        </div>
-                                        <h2 class="pushing_clouds">
-                                            pushing clouds
-                                        </h2>
-                                        <span class="pushing_clouds_subtitle">
-                                                adventure,science,comedy
-                                            </span>
-                                        <div class="pagotop_right_price_continer">
-                                            <span class="old_price"><del>60.00</del></span>
-                                            <span class="new_price"> USD <span class="price_count">45.25</span>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item   w-100 h-100  ">
-                                    <div
-                                        class="pagetop_rightslider_item d-flex flex-column align-items-center justify-content-center ">
-                                        <h2 class="right_item_title">best seller</h2>
-                                        <span class="rigth_item_excerpt">Based sales this week</span>
-                                        <div class="pagetop_book_img">
-                                            <img src="./assets/images/books3.jpg" alt="pagetop_book"
-                                                 class="w-100 h-100 ">
-                                        </div>
-                                        <h2 class="pushing_clouds">
-                                            pushing clouds
-                                        </h2>
-                                        <span class="pushing_clouds_subtitle">
-                                                adventure,science,comedy
-                                            </span>
-                                        <div class="pagotop_right_price_continer">
-                                            <span class="old_price"><del>60.00</del></span>
-                                            <span class="new_price"> USD <span class="price_count">45.25</span>
-                                                </span>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                             <button class="carousel-control-prev" type="button"
                                     data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -197,7 +117,7 @@
             <div class="four_item_container w-100 d-flex justify-content-between ">
                 <div class="four_item d-flex">
                     <div class="item_img">
-                        <img src="./assets/css/logo/four_item1.png" alt="four_item_image">
+                        <img src="/assets/css/logo/four_item1.png" alt="four_item_image">
                     </div>
                     <h3 class="item_title">
                         quick delivery
@@ -206,7 +126,7 @@
 
                 <div class="four_item d-flex">
                     <div class="item_img">
-                        <img src="./assets/css/logo/secure.png" alt="four_item_image">
+                        <img src="/assets/css/logo/secure.png" alt="four_item_image">
                     </div>
                     <h3 class="item_title">
                         quick delivery
@@ -215,7 +135,7 @@
 
                 <div class="four_item d-flex">
                     <div class="item_img">
-                        <img src="./assets/css/logo/like.png" alt="four_item_image">
+                        <img src="/assets/css/logo/like.png" alt="four_item_image">
                     </div>
                     <h3 class="item_title">
                         Return guarante
@@ -224,7 +144,7 @@
 
                 <div class="four_item d-flex">
                     <div class="item_img">
-                        <img src="./assets/css/logo/star.png" alt="four_item_image">
+                        <img src="/assets/css/logo/star.png" alt="four_item_image">
                     </div>
                     <h3 class="item_title">
                         quick delivery
@@ -242,66 +162,28 @@
                     <div class="recomended_container_in position-relative ">
                         <div class="recomended_section_title">
                             <h2>
-                                recomended for you
+                                @lang('index.recomended')
                             </h2>
                         </div>
 
                         <div class="recomended_section_bottom">
-
                                 <span class="swipe_right_btn">
                                     <span class="swipe_right">
                                         <i class="fas fa-angle-right"></i>
                                     </span>
                                 </span>
-
                             <span class="swipe_left_btn">
                                     <i class="fas fa-angle-left"></i>
                                 </span>
 
                             <div class="recomended_swipe_container  w-100 ">
-
+                                  @foreach($best_book as $key)
                                 <div class="recomended_item">
                                     <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
+                                        <img src="{{$key->img_front==null ? $key->img_audio : $key->img_front}}" alt="book_image">
                                     </a>
                                 </div>
-
-                                <div class="recomended_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
-                                    </a>
-                                </div>
-
-                                <div class="recomended_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
-                                    </a>
-                                </div>
-
-                                <div class="recomended_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
-                                    </a>
-                                </div>
-
-                                <div class="recomended_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
-                                    </a>
-                                </div>
-
-                                <div class="recomended_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
-                                    </a>
-                                </div>
-
-                                <div class="recomended_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
-                                    </a>
-                                </div>
-
+                                @endforeach
                             </div>
 
                         </div>
@@ -311,11 +193,11 @@
                 </div>
 
                 <div class="popular_container">
-                    <img src="./assets/images/popular_bg.png" alt="recomended_bg" class='recomended_bg'>
+                    <img src="/assets/images/popular_bg.png" alt="recomended_bg" class='recomended_bg'>
                     <div class="popular_container_in position-relative ">
                         <div class="popular_section_title">
                             <h2>
-                                popular in 2020
+                               @lang('index.popularBooks')
                             </h2>
                         </div>
 
@@ -332,50 +214,15 @@
                                 </span>
 
                             <div class="popular_swipe_container  w-100 ">
-
+                                @foreach($advice as $key)
                                 <div class="popular_item">
                                     <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
+                                        <img src="{{$key->img_front==null ? $key->img_audio : $key->img_front}}" alt="book_image">
                                     </a>
                                 </div>
-
-                                <div class="popular_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
-                                    </a>
-                                </div>
-
-                                <div class="popular_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
-                                    </a>
-                                </div>
-
-                                <div class="popular_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
-                                    </a>
-                                </div>
-
-                                <div class="popular_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
-                                    </a>
-                                </div>
-
-                                <div class="popular_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
-                                        <img src="./assets/images/books3.jpg" alt="book_image">
-                                    </a>
-                                </div>
-
-
-
+                                @endforeach
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
 
@@ -386,7 +233,7 @@
     <section class="categories_section w-100 p-1">
         <div class="center">
             <div class="categoriy_section_title w-100 d-flex justify-content-between ">
-                <h2>categories</h2>
+                <h2>@lang('index.categories')</h2>
                 <div class="swipe_buttons_container ">
                     <button class="category_btn swipe_active  swipe_1" type="button"></button>
                     <button class="category_btn   swipe_2" type="button"></button>
@@ -394,59 +241,16 @@
                 </div>
             </div>
             <div class="category_inner w-100 d-flex ">
+                @foreach($category_list as $key)
                 <a href="#" target="_self">
                     <div class="category_item">
-                        <h4 class="category_item_title">Arts & Photography</h4>
+                        <h4 class="category_item_title">{{$key->category_name}}</h4>
                         <p class="category_info">
-                            <span class="item_count">214</span> + Item
+                            <span class="item_count">{{$key->items}}</span> + @lang('index.book')
                         </p>
                     </div>
                 </a>
-
-                <a href="#" target="_self">
-                    <div class="category_item">
-                        <h4 class="category_item_title">Arts & Photography</h4>
-                        <p class="category_info">
-                            <span class="item_count">214</span> + Item
-                        </p>
-                    </div>
-                </a>
-
-                <a href="#" target="_self">
-                    <div class="category_item">
-                        <h4 class="category_item_title">Arts & Photography</h4>
-                        <p class="category_info">
-                            <span class="item_count">214</span> + Item
-                        </p>
-                    </div>
-                </a>
-
-                <a href="#" target="_self">
-                    <div class="category_item">
-                        <h4 class="category_item_title">Arts & Photography</h4>
-                        <p class="category_info">
-                            <span class="item_count">214</span> + Item
-                        </p>
-                    </div>
-                </a>
-
-                <a href="#" target="_self">
-                    <div class="category_item">
-                        <h4 class="category_item_title">Arts & Photography</h4>
-                        <p class="category_info">
-                            <span class="item_count">214</span> + Item
-                        </p>
-                    </div>
-                </a>
-
-                <a href="#" target="_self">
-                    <div class="category_item">
-                        <h4 class="category_item_title">Arts & Photography</h4>
-                        <p class="category_info">
-                            <span class="item_count">214</span> + Item
-                        </p>
-                    </div>
-                </a>
+                @endforeach
             </div>
         </div>
 
@@ -455,204 +259,85 @@
     <section class="new_books_section w-100 p-1">
         <div class="center">
             <div class="categoriy_section_title w-100 d-flex justify-content-between ">
-                <h2>new books</h2>
+                <h2>@lang('index.newBooks')</h2>
                 <a class="see_all" href="#" target="_self">
-                    See all
+                   @lang('index.seeAll')
                 </a>
             </div>
 
             <div class="new_books_inner">
-
+                @foreach($new_book as $key)
                 <div class="new_books_item ">
-
                     <div class="new_books_image_container w-100">
+                        @if($key['books']->discount!=null)
                             <span class="discount_percentage">
-                                50%
+                               {{(new \App\Helper\index())->interest($key['books']->price,$key['books']->discount)}}
                             </span>
+                        @endif
                         <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
+                            <img src="{{$key['books']->img_front==null ? $key['books']->img_audio : $key['books']->img_front}}" alt="new_books">
                         </a>
                     </div>
-
                     <div class="book_item_bottom w-100 ">
                         <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
+                            <h5>{{$key['books']->book_name}}</h5>
                         </a>
                         <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
+                            @foreach($key['category'] as $key2)
+                            <span class="book_type">{{$key2->categorys}}</span>
+                            @endforeach
                         </div>
                         <div class="imdb_container w-100 d-flex justify-content-between">
                             <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
                             <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
+                                @if($key['books']->discount!=null)
+                                <span class="new_price"> $ {{$key['books']->discount}} </span>
+                                <span class="old_price"> <del>$ {{$key['books']->price}}</del> </span>
+                                @else
+                                    <span class="new_price"> $ {{$key['books']->price}} </span>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+                @endforeach
             </div>
         </div>
     </section>
-
+@if(count($costly_books)==3)
     <section class="three_boks_section  w-100 p-1">
         <div class="center">
             <div class="d-flex justify-content-between w-100">
                 <div class="boks3_lelft h-100  d-flex justify-content-between  ">
                     <div class="boks_left_text   d-flex  justify-content-between ">
-
-                        <div class="boks_left_text_author">
+                        <div class="boks_left_text_author pagetop_subtitle">
                             <a href="javascript:void(0)">
-                                <h2 class="boks3_left_title">Battle Drive</h2>
+                                <h2 class="boks3_left_title">{{$costly_books[0]['books']->book_name}}</h2>
                             </a>
-                            <span class="boks3_left_excerpt">by Napoleon Sigh</span>
+                            <p>
+                            @foreach($costly_books[0]['category'] as $key)
+                            <span class="boks3_left_excerpt">{{$key->author}}</span>
+                            @endforeach
+                            </p>
                         </div>
 
                         <div class="boks_left_text_price  d-flex ">
                             <div class="boks_left_text_single_price">
                                     <span class="new_price"
-                                          style="color: white; font-size: 20px; margin-right: 5px; ">$9.5</span>
+                                          style="color: white; font-size: 20px; margin-right: 5px; ">$ {{$costly_books[0]['books']->discount}}</span>
                                 <del>
                                         <span class="old_price"
                                               style="color: white; line-height:32px; margin-right: 5px; ">
-                                            $12.0
+                                            $ {{$costly_books[0]['books']->price}}
                                         </span>
                                 </del>
                             </div>
-                            <button class="buy_now_btn"> buy </button>
+                            <button class="buy_now_btn"> @lang('index.buy') </button>
                         </div>
 
                     </div>
                     <a href="javascript:void(0)" class="boks3_left_img">
-                        <img src="./assets/images/bookd2.jpg" alt="3boks_image">
+                        <img src="{{$costly_books[0]['books']->img_front}}" alt="3boks_image">
                     </a>
                 </div>
 
@@ -660,224 +345,106 @@
 
                     <div class="boks3_right_item d-flex w-100 justify-content-between ">
                         <a class="right_item_img" href="#">
-                            <img src="./assets/images/boooks.jpg" alt="right_item_book">
+                            <img src="{{$costly_books[1]['books']->img_front}}" alt="right_item_book">
                         </a>
                         <div class="boks3_right_text  d-flex justify-content-between ">
                             <div>
                                 <h2 class="boks3_right_item_title">
-                                    <a href="javascript:void(0)">Battle Drive</a>
+                                    <a href="javascript:void(0)">{{$costly_books[1]['books']->book_name}}</a>
                                 </h2>
                                 <p class="boks3_right_item_excerpt">
-                                    by Napoleon Sigh
+                                    @foreach($costly_books[1]['category'] as $key)
+                                        <span class="boks3_left_excerpt">{{$key->author}}</span>
+                                    @endforeach
                                 </p>
                             </div>
                             <div class="d-flex flex-column ">
                                 <div class="d-flex justify-content-between">
                                         <span class="new_price"
-                                              style="color: white; font-size: 20px; margin-right: 5px; ">$9.5</span>
+                                              style="color: white; font-size: 20px; margin-right: 5px; ">$ {{$costly_books[1]['books']->discount}}</span>
                                     <del> <span class="old_price"
-                                                style="color: white; line-height:32px; margin-right: 5px; "> $12.0
+                                                style="color: white; line-height:32px; margin-right: 5px; "> $ {{$costly_books[1]['books']->price}}
                                             </span>
                                     </del>
 
                                 </div>
-                                <button class="buy_now_btn" style="margin-left: 0px;"> buy </button>
+                                <button class="buy_now_btn" style="margin-left: 0px;"> @lang('index.buy') </button>
                             </div>
                         </div>
                     </div>
 
                     <div class="boks3_right_item d-flex w-100 justify-content-between ">
                         <a class="right_item_img" href="#">
-                            <img src="./assets/images/boooks.jpg" alt="right_item_book">
+                            <img src="{{$costly_books[2]['books']->img_front}}" alt="right_item_book">
                         </a>
                         <div class="boks3_right_text  d-flex justify-content-between ">
                             <div>
                                 <h2 class="boks3_right_item_title">
-                                    <a href="javascript:void(0)">Battle Drive</a>
+                                    <a href="javascript:void(0)">{{$costly_books[2]['books']->book_name}}</a>
                                 </h2>
                                 <p class="boks3_right_item_excerpt">
-                                    by Napoleon Sigh
+                                    @foreach($costly_books[2]['category'] as $key)
+                                        <span class="boks3_left_excerpt">{{$key->author}}</span>
+                                    @endforeach
                                 </p>
                             </div>
                             <div class="d-flex flex-column ">
                                 <div class="d-flex justify-content-between">
                                         <span class="new_price"
-                                              style="color: white; font-size: 20px; margin-right: 5px; ">$9.5</span>
+                                              style="color: white; font-size: 20px; margin-right: 5px; ">$ {{$costly_books[2]['books']->discount}}</span>
                                     <del> <span class="old_price"
-                                                style="color: white; line-height:32px; margin-right: 5px; "> $12.0
+                                                style="color: white; line-height:32px; margin-right: 5px; "> $ {{$costly_books[2]['books']->price}}
                                             </span>
                                     </del>
 
                                 </div>
-                                <button class="buy_now_btn" style="margin-left: 0px;"> buy </button>
+                                <button class="buy_now_btn" style="margin-left: 0px;"> @lang('index.buy') </button>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </section>
-
+@endif
     <section class="new_books_section w-100 p-1">
         <div class="center">
             <div class="new_books_inner">
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
+                    @foreach($audio_books as $key)
+                        <div class="new_books_item ">
+                            <div class="new_books_image_container w-100">
+                                @if($key['books']->discount!=null)
+                                    <span class="discount_percentage">
+                               {{(new \App\Helper\index())->interest($key['books']->price,$key['books']->discount)}}
                             </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
+                                @endif
+                                <a class="item_img" href="#" target="_self">
+                                    <img src="{{$key['books']->img_front==null ? $key['books']->img_audio : $key['books']->img_front}}" alt="new_books">
+                                </a>
+                            </div>
+                            <div class="book_item_bottom w-100 ">
+                                <a href="#">
+                                    <h5>{{$key['books']->book_name}}</h5>
+                                </a>
+                                <div class="book_type_contianer d-flex  flex-wrap  w-100">
+                                    @foreach($key['category'] as $key2)
+                                        <span class="book_type">{{$key2->categorys}}</span>
+                                    @endforeach
+                                </div>
+                                <div class="imdb_container w-100 d-flex justify-content-between">
+                                    <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
+                                    <div>
+                                        @if($key['books']->discount!=null)
+                                            <span class="new_price"> $ {{$key['books']->discount}} </span>
+                                            <span class="old_price"> <del>$ {{$key['books']->price}}</del> </span>
+                                        @else
+                                            <span class="new_price"> $ {{$key['books']->price}} </span>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
             </div>
         </div>
     </section>
@@ -892,7 +459,7 @@
 
                     <div class="flash_sale_left d-flex flex-column  ">
                         <h3 class="flash_sale_title">
-                            flash sale
+                            @lang('index.limitedDiscount')
                         </h3>
                         <div class="timer_container">
                             <div id="timer" class="d-flex">
@@ -1047,8 +614,6 @@
                                     </p>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -1059,160 +624,41 @@
     <section class="new_books_section w-100 p-1">
         <div class="center">
             <div class="new_books_inner">
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
+                @foreach($free_books as $key)
+                    <div class="new_books_item ">
+                        <div class="new_books_image_container w-100">
+                            @if($key['books']->discount!=null)
+                                <span class="discount_percentage">
+                               {{(new \App\Helper\index())->interest($key['books']->price,$key['books']->discount)}}
                             </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
+                            @endif
+                            <a class="item_img" href="#" target="_self">
+                                <img src="{{$key['books']->img_front==null ? $key['books']->img_audio : $key['books']->img_front}}" alt="new_books">
+                            </a>
                         </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
+                        <div class="book_item_bottom w-100 ">
+                            <a href="#">
+                                <h5>{{$key['books']->book_name}}</h5>
+                            </a>
+                            <div class="book_type_contianer d-flex  flex-wrap  w-100">
+                                @foreach($key['category'] as $key2)
+                                    <span class="book_type">{{$key2->categorys}}</span>
+                                @endforeach
+                            </div>
+                            <div class="imdb_container w-100 d-flex justify-content-between">
+                                <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
+                                <div>
+                                    @if($key['books']->discount!=null)
+                                        <span class="new_price"> $ {{$key['books']->discount}} </span>
+                                        <span class="old_price"> <del>$ {{$key['books']->price}}</del> </span>
+                                    @else
+                                        <span class="new_price"> $ {{$key['books']->price}} </span>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="new_books_item ">
-
-                    <div class="new_books_image_container w-100">
-                            <span class="discount_percentage">
-                                50%
-                            </span>
-                        <a class="item_img" href="#" target="_self">
-                            <img src="./assets/images/boooks.jpg" alt="new_books">
-                        </a>
-                    </div>
-
-                    <div class="book_item_bottom w-100 ">
-                        <a href="#">
-                            <h5>The Missadventure of Lorem ipsum dolor sit amet. </h5>
-                        </a>
-                        <div class="book_type_contianer d-flex  flex-wrap  w-100">
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                            <span class="book_type">adventure</span>
-                            <span class="book_type">survival</span>
-                        </div>
-                        <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
-                            <div>
-                                <span class="new_price"> $45.4 </span>
-                                <span class="old_price"> <del>$98.4</del> </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -1225,10 +671,10 @@
                         <i class="fas fa-users"></i>
                     </div>
                     <div class="statistica_count">
-                        <h5>125,663</h5>
+                        <h5>{{$total_info[0]->total_user}}+</h5>
                     </div>
                     <p class="statistica_item_subtitle">
-                        Happy Customers
+                        @lang('index.user')
                     </p>
                 </div>
 
@@ -1237,22 +683,22 @@
                         <i class="fas fa-book-open"></i>
                     </div>
                     <div class="statistica_count">
-                        <h5>45,663+</h5>
+                        <h5>{{$total_info[0]->total_book}}+</h5>
                     </div>
                     <p class="statistica_item_subtitle">
-                        Book Collections
+                        @lang('index.book')
                     </p>
                 </div>
 
                 <div class="statistica_item d-flex flex-column align-items-center justify-content-center ">
                     <div class="statistica_item_img">
-                        <i class="fas fa-store"></i>
+                        <i class="fas fa-list-alt"></i>
                     </div>
                     <div class="statistica_count">
-                        <h5>1.562</h5>
+                        <h5>{{$total_info[0]->total_category}}+</h5>
                     </div>
                     <p class="statistica_item_subtitle">
-                        Our Stores
+                        @lang('index.category')
                     </p>
                 </div>
 
@@ -1261,10 +707,10 @@
                         <img src="./assets/css/logo/feather.png" alt="">
                     </div>
                     <div class="statistica_count">
-                        <h5>457</h5>
+                        <h5>{{$total_info[0]->total_author}}+</h5>
                     </div>
                     <p class="statistica_item_subtitle">
-                        Famous Writers
+                        @lang('index.author')
                     </p>
                 </div>
 
@@ -1278,13 +724,13 @@
                 <div class="subscribe_in_main  d-flex  justify-content-between align-items-center  ">
                     <div class="subscirbe_text">
                         <p>
-                            Subscribe our newsletter for newest books updates
+                            @lang('index.subscriber')
                         </p>
                     </div>
                     <div class="subscribe_inputs d-flex justify-content-between ">
-                        <input type="text" required placeholder="Type your email here ">
+                        <input type="text" required placeholder="@lang('index.typeEmail') ">
                         <button type="button" class="subscribe_btn">
-                            subscribe
+                            @lang('index.submit')
                         </button>
                     </div>
                 </div>

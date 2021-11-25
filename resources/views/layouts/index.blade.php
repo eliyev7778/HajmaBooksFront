@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,minimal-ui" />
-    <title>Hompage - HajMa Book</title>
+    <title>@lang('index.title') - HajMa Book</title>
     <link rel="icon" href="/assets/css/logo/32x32.png.png">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="/assets/css/style.css?">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -18,50 +19,50 @@
 
             <div class="heaer_logo">
                 <a href="#" class="w-100 h-100 ">
-                    <img src="./assets/css/logo/header_logo.png" alt="header_logo">
+                    <img src="/assets/css/logo/header_logo.png" alt="header_logo">
                 </a>
             </div>
 
             <div class="header_middle  justify-content-between align-items-center ">
-                <input type="text" placeholder="Search over 30 mmillion book titles">
+                <input  id="desktopSearch" type="text" name="desktopSearch"  placeholder="@lang('index.search')">
+                <ul id="desktop_result" class="desktop_input_search_result ">
+
+                </ul>
                 <button type="button"><i class="fas fa-search"></i></button>
             </div>
             <div class="header_right  align-items-center ">
-
                 <div class="lang_menu" >
                     <button id="lang_menu_btn" class="lang_btn d-flex " >
-                        <p class="d-flex" >Aze <img src="./assets/css/logo/azerbaijan.png" alt="aze_flag"> </p>
+                        <p class="d-flex">
+                            <img src="/assets/css/logo/{{Config::get('app.locale')}}.png" alt="aze_flag">
+                        </p>
                         <span><i class="fas fa-angle-down"></i></span>
                     </button>
                     <ul id="lang_list" class="lang_list  flex-column " >
+                        @php $lang_list=['az','en','ru','tr','uk']; @endphp
+                        @foreach($lang_list as $key)
+                            @if($key!=Config::get('app.locale'))
                         <li class="lang_list_item" >
-                            <a href="javascript:void(0)" class="d-flex" >
-                                Aze <img src="./assets/css/logo/azerbaijan.png" alt="aze_flag">
+                            <a href="{{route('lang',$key)}}" class="d-flex" >
+                                <img src="/assets/css/logo/{{$key}}.png" alt="{{$key}}">
                             </a>
                         </li>
-
-                        <li class="lang_list_item" >
-                            <a href="javascript:void(0)" class="d-flex" >
-                                Eng <img src="./assets/css/logo/united-states.png" alt="english_flag">
-                            </a>
-                        </li>
-
-                        <li class="lang_list_item" >
-                            <a href="javascript:void(0)" class="d-flex"  >
-                                Ru <img src="./assets/css/logo/russia.png" alt="rus_flag">
-                            </a>
-                        </li>
+                            @endif
+                        @endforeach
                     </ul>
-
                 </div>
-
-                <a href="javascript:void(0)" target="_self" class="login_btn">
-                    Log In
+              @if(!\Auth::user())
+                <a href="{{route('login')}}" target="_self" class="login_btn">
+                    @lang('index.login')
                 </a>
-
-                <a href="javascript:void(0)" target="_self" class="signup_btn">
-                    <img src="./assets/css/logo/user_icon.svg" alt="user_icon" width="20px" height="20px"> Sign Up
+                <a href="{{route('login')}}" target="_self" class="signup_btn">
+                    <img src="/assets/css/logo/user_icon.svg" alt="user_icon" width="20px" height="20px"> @lang('index.signup')
                 </a>
+                @else
+                    <a href="{{route('login')}}" target="_self" class="signup_btn">
+                        <img src="/assets/css/logo/user_icon.svg" alt="user_icon" width="20px" height="20px"> {{\Auth::user()->name}}
+                    </a>
+                  @endif
             </div>
             <button class="open_mobile_menu btn ">
                 <span><i class="fas fa-bars"></i></span>
@@ -73,53 +74,18 @@
         </div>
         <div class="mobile_category  p-1 w-100" >
             <a class="mobile_category_btn" data-bs-toggle="collapse" href="#cateqory_collapse" role="button"
-               aria-expanded="false" aria-controls="cateqory_collapse"> Categories
+               aria-expanded="false" aria-controls="cateqory_collapse"> @lang('index.categories')
                 <span><i class="fas fa-angle-down"></i></span> </a>
             <div class="collapse multi-collapse" id="cateqory_collapse">
                 <div class="mobile_category_list_container" >
                     <ul class="mobile_category_list  d-flex  flex-column ">
-
+                        @foreach((new \App\Models\Book_categorys())->category_list() as $key)
                         <li class="mobile_category_item">
-                            <a href="javascript:void(0)">
-                                blog
+                            <a href="{{route('category',$key->slug)}}">
+                                {{$key->category_name}}
                             </a>
                         </li>
-
-                        <li class="mobile_category_item">
-                            <a href="javascript:void(0)">
-                                watch
-                            </a>
-                        </li>
-
-                        <li class="mobile_category_item">
-                            <a href="javascript:void(0)">
-                                watch
-                            </a>
-                        </li>
-
-                        <li class="mobile_category_item">
-                            <a href="javascript:void(0)">
-                                watch
-                            </a>
-                        </li>
-
-                        <li class="mobile_category_item">
-                            <a href="javascript:void(0)">
-                                watch
-                            </a>
-                        </li>
-
-                        <li class="mobile_category_item">
-                            <a href="javascript:void(0)">
-                                watch
-                            </a>
-                        </li>
-
-                        <li class="mobile_category_item">
-                            <a href="javascript:void(0)">
-                                watch
-                            </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -129,33 +95,33 @@
             <nav class="navbar">
                 <ul class="navbar_list">
                     <li class="nav_list_item">
-                        <a href="./index.html" target="_self" class="my_active">
-                            home
+                        <a href="{{route('index')}}" target="_self" class="my_active">
+                            @lang('index.home')
                         </a>
                     </li>
                     <li class="nav_list_item">
                         <a href="javascript:void(0)" target="_self">
-                            books
+                            @lang('index.books')
                         </a>
                     </li>
                     <li class="nav_list_item">
                         <a href="javascript:void(0)" target="_self">
-                            audiobooks
+                            @lang('index.audioBooks')
                         </a>
                     </li>
                     <li class="nav_list_item">
                         <a href="javascript:void(0)" target="_self">
-                            collections
+                            @lang('index.collections')
                         </a>
                     </li>
+{{--                    <li class="nav_list_item">--}}
+{{--                        <a href="javascript:void(0)" target="_self">--}}
+{{--                            @lang('index.onsale')--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                     <li class="nav_list_item">
-                        <a href="javascript:void(0)" target="_self">
-                            on sale
-                        </a>
-                    </li>
-                    <li class="nav_list_item">
-                        <a href="./contact.html" target="_self">
-                            Əlaqə
+                        <a href="/contact.html" target="_self">
+                            @lang('index.contact')
                         </a>
                     </li>
                 </ul>
@@ -163,21 +129,16 @@
 
             <div class="header_category">
                 <button class="desktop_category_btn">
-                    Categories <i class=" fas fa-angle-down"></i>
+                    @lang('index.categories') <i class=" fas fa-angle-down"></i>
                 </button>
                 <ul class="desktop_category_list   flex-column ">
-
+                    @foreach((new \App\Models\Book_categorys())->category_list() as $key)
                     <li class="desktop_category_item">
-                        <a href="javascript:void(0)">
-                            blog
+                        <a href="{{route('category',$key->slug)}}">
+                            {{$key->category_name}}
                         </a>
                     </li>
-
-                    <li class="desktop_category_item">
-                        <a href="javascript:void(0)">
-                            watch
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -192,38 +153,38 @@
         <div class="footer_continer d-flex justify-content-between">
             <div class="footer_logo_container d-flex flex-column justify-content-between">
                 <a href="javascript:void(0)" class="footer_logo_img">
-                    <img src="./assets/css/logo/footer_logo.png" alt="footer_logo">
+                    <img src="/assets/css/logo/header_logo.png" alt="footer_logo">
                 </a>
                 <div class="sosial_networks">
-                    <h5>Follow Us</h5>
+                    <h5>@lang('index.fllowUs')</h5>
 
                     <ul class="sosial_networks_list d-flex ">
                         <li class="sosial_network_item">
-                            <a href="javascript:void">
+                            <a href="javascript:void(0)">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         </li>
 
                         <li class="sosial_network_item">
-                            <a href="javascript:void">
+                            <a href="javascript:void(0)">
                                 <i class="fab fa-youtube"></i>
                             </a>
                         </li>
 
                         <li class="sosial_network_item">
-                            <a href="javascript:void">
+                            <a href="javascript:void(0)">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </li>
 
                         <li class="sosial_network_item">
-                            <a href="javascript:void">
+                            <a href="javascript:void(0)">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </li>
 
                         <li class="sosial_network_item">
-                            <a href="javascript:void">
+                            <a href="javascript:void(0)">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </li>
@@ -310,7 +271,7 @@
             </div>
 
             <div class="footer_subscribe">
-                <h5>Don't miss the newest books</h5>
+                <h5>@lang('index.fllowUs')</h5>
                 <form class="footer_email" action="#" method="post" enctype="multipart/form-data">
                     <input type="text" placeholder="Type your email here">
                 </form>
@@ -326,76 +287,67 @@
         <ul class="mobile_h_list d-flex flex-column ">
             <li class="mobile_h_listitem">
                 <a href="javascript:void(0)">
-                    home
+                    @lang('index.home')
                 </a>
             </li>
 
             <li class="mobile_h_listitem">
                 <a href="javascript:void(0)">
-                    books
+                    @lang('index.books')
                 </a>
             </li>
 
             <li class="mobile_h_listitem">
                 <a href="javascript:void(0)">
-                    audiobooks
+                    @lang('index.audioBooks')
                 </a>
             </li>
 
             <li class="mobile_h_listitem">
                 <a href="javascript:void(0)">
-                    collections
+                    @lang('index.collections')
                 </a>
             </li>
 
             <li class="mobile_h_listitem">
                 <a href="javascript:void(0)">
-                    on sale
+                    @lang('index.onsale')
                 </a>
             </li>
         </ul>
 
         <div class="mobile_register d-flex flex-column ">
-            <a href="javascript:void(0)">
-                <i class="fas fa-sign-in-alt"></i> login
+            @if(!\Auth::user())
+            <a href="{{route('login')}}">
+                <i class="fas fa-sign-in-alt"></i> @lang('index.login')
             </a>
 
-            <a href="javascript:void(0)">
-                <i class="far fa-user"></i> sign up
+            <a href="{{route('login')}}">
+                <i class="far fa-user"></i> @lang('index.signup')
             </a>
-
+            @else
+                <a href="{{route('login')}}">
+                    <i class="far fa-user"></i> {{\Auth::user()->name}}
+                </a>
+                @endif
             <div class="lang_menu" >
                 <button id="mobile_lang_menu_btn" class="lang_btn d-flex " >
-                    <p class="d-flex" >Aze <img src="./assets/css/logo/azerbaijan.png" alt="aze_flag"> </p>
+                    <p class="d-flex" ><img src="/assets/css/logo/{{Config::get('app.locale')}}.png" alt="aze_flag"> </p>
                     <span><i class="fas fa-angle-down"></i></span>
                 </button>
                 <ul id="mobile_lang_list" class="lang_list  flex-column " >
+                    @foreach($lang_list as $key)
                     <li class="lang_list_item" >
-                        <a href="javascript:void(0)" class="d-flex" >
-                            Aze <img src="./assets/css/logo/azerbaijan.png" alt="aze_flag">
+                        <a href="{{route('lang',$key)}}" class="d-flex" >
+                           <img src="/assets/css/logo/{{$key}}.png" alt="{{$key}}">
                         </a>
                     </li>
-
-                    <li class="lang_list_item" >
-                        <a href="javascript:void(0)" class="d-flex" >
-                            Eng <img src="./assets/css/logo/united-states.png" alt="english_flag">
-                        </a>
-                    </li>
-
-                    <li class="lang_list_item" >
-                        <a href="javascript:void(0)" class="d-flex"  >
-                            Ru <img src="./assets/css/logo/russia.png" alt="rus_flag">
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
-
             </div>
-
         </div>
-
     </div>
 </div>
-
 
 
 <!-- Jquery latest Version -->
@@ -411,6 +363,7 @@
 <!-- Header JS file -->
 <script src="/assets/js/header.js"></script>
 <script src="/assets/js/swiper.js"></script>
+<script src="/assets/js/main.js"></script>
 
 <script>
 

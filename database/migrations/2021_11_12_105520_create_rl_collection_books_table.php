@@ -18,8 +18,6 @@ class CreateRlCollectionBooksTable extends Migration
             $table->timestamps();
             $table->integer("collection_id");
             $table->integer("book_id");
-            $table->foreign('book_id')->references('id')->on('books');
-            $table->foreign('collection_id')->references('id')->on('book_collections');
         });
     }
 

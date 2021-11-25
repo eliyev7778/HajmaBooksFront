@@ -81,13 +81,12 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-} 
+}
 
 .pagetop_slider_left .pagetop_title{
     color: #6C5DD3;
     font-size: 15px ;
     font-weight: 600;
-    text-transform: uppercase;
 }
 
 
@@ -98,8 +97,14 @@
     line-height: 60px;
 }
 
+.pagetop_subtitle p span{
+    text-transform: capitalize;
+}
 
 
+.pagetop_subtitle p span:not(:last-child)::after , .boks3_right_item_excerpt span:not(:last-child)::after {
+    content: " ,";
+}
 
 
 
@@ -110,7 +115,7 @@
 
 
 .pagetop_slider_left .pagetop_buttons{
-    width: 31%;
+    width: 41%;
 }
 
 
@@ -132,15 +137,18 @@
     -moz-border-radius: 11.7786px;
     -ms-border-radius: 11.7786px;
     -o-border-radius: 11.7786px;
+    width: 60%;
+    margin-right: 10px;
 }
 
 .pagetop_slider_left .get_deal_btn:hover{
     background-color: white;
     color: #6C5DD3 ;
-    
+
 }
 
 .pagetop_slider_left .see_others{
+    width: 100%;
     border: 0.84133px solid #AAAAAA;
     border-radius: 11.358px;
     text-decoration: none;
@@ -173,16 +181,16 @@
     height: 100%;
 }
 
-   
+
 
 .pagetop_rightslider_item{
-    margin: 0% auto !important ; 
+    margin: 0% auto !important ;
     width: 75%;
 }
 
 .pagetop_book_img{
     height: 246px;
-    width: 95%;
+    width: 75%;
     background: #C4C4C4;
     border-radius: 12px;
     -webkit-border-radius: 12px;
@@ -221,11 +229,17 @@
     margin-top: 10px;
 }
 
+
+
+
 .pushing_clouds_subtitle{
     color: white;
     text-transform: uppercase;
     font-size: 9px;
     letter-spacing: 1px;
+}
+.pushing_clouds_subtitle:not(:last-child)::after{
+    content: ",";
 }
 
 .pagotop_right_price_continer{
@@ -363,25 +377,25 @@
     display: flex;
     overflow-x: scroll;
     flex-wrap: nowrap;
-   
+
 }
 
 .recomended_swipe_container  {
     scrollbar-width: thin ;
     scrollbar-color:transparent transparent ;
     position: relative;
-   
+
 }
-  
+
   /* Works on Chrome, Edge, and Safari */
   .recomended_swipe_container::-webkit-scrollbar {
     width: 12px;
   }
-  
+
   .recomended_swipe_container::-webkit-scrollbar-track {
     background:transparent;
   }
-  
+
   .recomended_swipe_container::-webkit-scrollbar-thumb {
     background-color:transparent;
     border-radius: 20px;
@@ -526,25 +540,25 @@
     display: flex;
     overflow-x: scroll;
     flex-wrap: nowrap;
-   
+
 }
 
 .popular_swipe_container  {
     scrollbar-width: thin ;
     scrollbar-color:transparent transparent ;
     position: relative;
-   
+
 }
-  
+
   /* Works on Chrome, Edge, and Safari */
   .popular_swipe_container::-webkit-scrollbar {
     width: 12px;
   }
-  
+
   .popular_swipe_container::-webkit-scrollbar-track {
     background:transparent;
   }
-  
+
   .popular_swipe_container::-webkit-scrollbar-thumb {
     background-color:transparent;
     border-radius: 20px;
@@ -656,16 +670,16 @@
 }
 
 
-  
+
   /* Works on Chrome, Edge, and Safari */
   .category_inner::-webkit-scrollbar {
     width: 12px;
   }
-  
+
   .category_inner::-webkit-scrollbar-track {
     background:transparent;
   }
-  
+
   .category_inner::-webkit-scrollbar-thumb {
     background-color:transparent;
     border-radius: 20px;
@@ -686,7 +700,7 @@
     padding: 30px  20px 20px 20px ;
     background: #8D27AD;
     border-radius: 8.9px;
-  
+
 
 }
 
@@ -750,7 +764,7 @@
 }
 .see_all:hover{
     color: #000;
-}   
+}
 
 .new_books_inner{
     display: flex;
@@ -764,7 +778,7 @@
 .new_books_item{
     width: calc( 90% / 5 );
     margin-bottom: 30px;
-    
+
 }
 
 .new_books_image_container{
@@ -815,10 +829,10 @@
 
 .book_item_bottom  a h5 {
     color: black;
-    white-space: nowrap; 
-    width: 100%; 
+    white-space: nowrap;
+    width: 100%;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
     margin-top: 10px;
     font-size: 20px;
     font-weight: 800;
@@ -940,7 +954,7 @@
     background: #8D28AD;
     border-radius: 4.98px;
     padding: 22px;
-   
+
 }
 
 
@@ -1032,7 +1046,7 @@
 .dots{
     display: block;
     font-size: 35px;
-   
+
     line-height: 70px;
     margin-right: 15px;
     animation-name: example;
@@ -1045,7 +1059,7 @@
 @keyframes example {
        0%{
         color: white;
-       } 
+       }
         100%{
             color: transparent;
        }
@@ -1083,7 +1097,7 @@
 }
 
 
-  
+
 .flash_swipe_container{
     overflow-x: scroll;
     scrollbar-width: thin ;
@@ -1093,16 +1107,16 @@
 }
 
 
-  
+
   /* Works on Chrome, Edge, and Safari */
   .flash_swipe_container::-webkit-scrollbar {
     width: 12px;
   }
-  
+
   .flash_swipe_container::-webkit-scrollbar-track {
     background:transparent;
   }
-  
+
   .flash_swipe_container::-webkit-scrollbar-thumb {
     background-color:transparent;
     border-radius: 20px;
@@ -1153,7 +1167,7 @@
     --star-color: #bebebe;
     --star-background: #FF7A00;
 }
-  
+
   .Stars {
     --percent: calc(var(--rating) / 5 * 100%);
     text-align: right;
@@ -1161,8 +1175,8 @@
     font-size: var(--star-size);
     font-family: Times;
     line-height: 1;
-    
-    
+
+
   }
   .Stars::before {
     content: '★★★★★';
@@ -1171,9 +1185,9 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  
+
    /* Just to make a preview more beautifull */
-  
+
 
 * {
     position: relative;
@@ -1250,21 +1264,21 @@
 progress {
     border: none;
     height: 5px;
-   
+
 }
-  
+
 progress {
     color: lightblue;
 }
-  
+
 progress::-webkit-progress-value {
     background: lightblue;
 }
-  
+
 progress::-moz-progress-bar {
     background: lightcolor;
 }
-  
+
 progress::-webkit-progress-value {
     background: #FF7A00;
     border-radius: 5px;
@@ -1273,7 +1287,7 @@ progress::-webkit-progress-value {
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
-  
+
 progress::-webkit-progress-bar {
     background:#C4C4C4 ;
     border-radius: 5px;
@@ -1290,7 +1304,7 @@ progress::-webkit-progress-bar {
     margin: 0px;
     margin-top: 10px;
     font-size: 13px;
-    
+
 }
 
 
@@ -1343,7 +1357,7 @@ progress::-webkit-progress-bar {
     -ms-transform: translateX(24px);
     -o-transform: translateX(24px);
 }
-/*************   Statistica  Section ****************************/ 
+/*************   Statistica  Section ****************************/
 .statistica_section{
     margin-top: 10px;
 }
@@ -1362,7 +1376,6 @@ progress::-webkit-progress-bar {
 .statistica_item_img{
     color: #8D28AD;
     font-size: 50px;
-   width: 62px ;
    height: 62px;
 }
 
@@ -1418,7 +1431,7 @@ progress::-webkit-progress-bar {
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-    padding: 6px 11px ; 
+    padding: 6px 11px ;
     color: white;
 }
 
@@ -1469,7 +1482,7 @@ progress::-webkit-progress-bar {
 
 
 @media (max-width : 1230px){
-    
+
     .new_books_inner div:not(:nth-child(5n)) {
         margin-right: 20px;
     }
@@ -1572,7 +1585,7 @@ progress::-webkit-progress-bar {
     .right_item_title{
         font-size: 17px  ;
     }
-   
+
 }
 
 @media (max-width:980px){
@@ -1615,7 +1628,7 @@ progress::-webkit-progress-bar {
     .flash_main {
         flex-direction: column;
         align-items: center;
-       
+
     }
 
     .flash_sale_left{
@@ -1632,7 +1645,7 @@ progress::-webkit-progress-bar {
 
 
 @media (max-width:925px) {
-   
+
 
     .new_books_item {
         width: calc( 93% / 4 );
@@ -1830,9 +1843,9 @@ progress::-webkit-progress-bar {
     }
 
     .category_item_title {
-       
+
         font-size: 17px;
-       
+
     }
 
 
@@ -1995,24 +2008,24 @@ progress::-webkit-progress-bar {
     .right_item_img{
         height: 225px;
         border-radius:5px ;
-        
+
      }
 
      .right_item_img img {
-        
+
         border-radius:5px ;
-        
+
      }
 
 
     .boks3_left_title {
         font-size: 24px;
     }
-    
+
     .recomended_section_title h2{
         font-size: 23px;
     }
-   
+
     .swipe_item_text{
         padding: 15px;
     }
@@ -2046,7 +2059,7 @@ progress::-webkit-progress-bar {
 
     .flash_sale_left {
         height: 154px;
-        
+
     }
 
     .left_books {
@@ -2070,7 +2083,7 @@ progress::-webkit-progress-bar {
         width: 100%;
     }
 
-    
+
     .subscribe_inputs {
         width: 100%;
     }
@@ -2140,7 +2153,7 @@ progress::-webkit-progress-bar {
     }
 
     .slider_container {
-      
+
         margin-top: 49px;
         margin-left: 16px;
     }
@@ -2193,7 +2206,7 @@ progress::-webkit-progress-bar {
 }
 
 @media (max-width:330px){
-   
+
 
     .pagetop_buttons{
         flex-direction: column;
