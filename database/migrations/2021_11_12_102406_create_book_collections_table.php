@@ -23,6 +23,11 @@ class CreateBookCollectionsTable extends Migration
             $table->string("name_en");
             $table->string("name_tr");
             $table->string("name_uk");
+            $table->string("slug_az");
+            $table->string("slug_ru");
+            $table->string("slug_en");
+            $table->string("slug_tr");
+            $table->string("slug_uk");
         });
     }
 

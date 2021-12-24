@@ -38,10 +38,12 @@ return [
     'book'=>'Book',
     'user'=>'User',
     'author'=>'Author',
+    'authors'=>'Authors',
     'category'=>'Category',
     'subscriber'=>'Subscribe our newsletter for newest books updates',
     'typeEmail'=>'Write your email',
     'submit'=>'Submit',
     'fllowUs'=>'Follow us',
-    'dontMissBook'=>'Don\'t miss the newest books'
+    'dontMissBook'=>'Don\'t miss the newest books',
+    'free'=>"Free"
 ];

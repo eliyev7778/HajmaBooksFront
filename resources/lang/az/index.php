@@ -38,10 +38,12 @@ return [
     'book'=>'Kitab',
     'user'=>'İstifadəçi',
     'author'=>'Müəllif',
+    'authors'=>'MÜƏLLİFLƏR',
     'category'=>'Kateqoriya',
     'subscriber'=>'Ən yeni kitab yeniləmələri üçün bülletenimizə abunə olun',
     'typeEmail'=>'e-poçtunuzu yazın',
     'submit'=>'Göndər',
     'fllowUs'=>'Bizi İzlə',
-    'dontMissBook'=>'Ən yeni kitabları qaçırmayın'
+    'dontMissBook'=>'Ən yeni kitabları qaçırmayın',
+    'free'=>"Pulsuz"
 ];

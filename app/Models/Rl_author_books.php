@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Rl_author_books extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 }

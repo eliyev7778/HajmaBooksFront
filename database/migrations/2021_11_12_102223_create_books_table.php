@@ -24,22 +24,18 @@ class CreateBooksTable extends Migration
             $table->string("title_ru");
             $table->string("title_tr");
             $table->string("title_uk");
-            $table->text("content_az");
-            $table->text("content_en");
-            $table->text("content_ru");
-            $table->text("content_tr");
-            $table->text("content_uk");
             $table->integer("pages")->nullable();
             $table->integer("year")->nullable();
-            $table->integer("see")->nullable();
-            $table->integer("sold")->nullable();
+            $table->integer("see")->default(0);
+            $table->integer("sold")->default(0);
             $table->integer("status")->nullable();
-            $table->decimal("price")->nullable();
-            $table->decimal("discount")->nullable();
-            $table->date('discount_date')->nullable();
+            $table->float("price",4,2)->nullable();
+            $table->float("discount",4,2)->nullable();
             $table->integer("languages_id");
             $table->integer("seller_id");
             $table->integer("user_id");
+            $table->integer("like")->default(0);
+            $table->integer("free")->default(0);
         });
     }
 

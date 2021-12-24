@@ -40,8 +40,8 @@
 }
 
 .dashboard_book_item{
-    min-width: 200px;
-    width: calc( 96.5% / 4 );
+    min-width: 182px;
+    width: calc( 95.8% / 4 );
     margin-top: 35px;
 }
 
@@ -127,17 +127,61 @@
 
 
 .dashboard_book_container{
-    margin-top: 50px;
+    width: 81%;
+    /* margin-top: 50px; */
+}
+
+.aside_menu{
+    margin-top: 36px;
+    margin-right: 10px;
+    width: 19%;
+}
+
+.aside_menu_list{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
 }
 
 
-@media (max-width:1320px){
+.aside_list_item{
+    width: 100%;
+}
+
+.aside_list_item a{
+    text-decoration: none;
+    text-transform: capitalize;
+    padding: 10px 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 33px;
+    color: #555963;
+    width: 100%;
+    display: inline-block;
+    transition: all .1s linear;
+    -webkit-transition: all .1s linaer;
+    -moz-transition: all .1s linaer;
+    -ms-transition: all .1s linaer;
+    -o-transition: all .1s linaer;
+}
+
+.aside_list_item a:hover{
+    color: white;
+    background-color: #6C5DD3;
+}
+
+
+@media (max-width:1345px){
     .dashboard_book_item {
-        
-        width: calc( 96% / 4 );
-        ;
+       
+        width: calc( 95% / 4 );
+       
     }
 }
+
+
+
 
 
 @media  (max-width:1160px) {
@@ -148,11 +192,40 @@
 
 
 
-@media (max-width:925px){
-    .dashboard_book_item{
-        width: calc(94% /4 );
+@media (max-width:1130px){
+    .dashboard_book_item {
+        width: calc( 94% / 4 );
     }
 }
+
+
+
+
+
+@media (max-width:980px){
+    .dashboard_book_item{
+        width: calc(96% /3 );
+    }
+
+    .dashboard_book_item:not(:nth-child(3n)) {
+        margin-right: 15px !important ;
+    }
+
+    .dashboard_book_item:nth-child(3n) {
+        margin-right: 0px !important;
+    }
+
+
+}
+
+
+@media (max-width:955px){
+    .dashboard_book_item {
+        width: calc(95% /3 );
+    }
+}
+
+
 
 @media (max-width:875px) {
     .dashboard_book_item {
@@ -163,12 +236,20 @@
 @media (max-width:780px){
     .dashboard_book_item_img{
         height: 265px;
+    }   
+}
+
+
+@media (max-width:760px){
+    .dashboard_book_item {
+        width: calc(94% /3 );
     }
 
-    .dashboard_book_item {
-        width: calc(93% /4 );
+    .aside_list_item a {
+        font-size: 14px;
     }
 }
+
 
 
 @media (max-width:715px){
@@ -179,27 +260,43 @@
 
 
 
-@media (max-width:670px){
+@media (max-width:680px){
     .dashboard_book_item {
-        width: calc(95% /3 );
+        width: calc(94% /3 );
+    }
+}
+
+
+@media (max-width:640px){
+    .aside_menu{
+        width: 27%;
+        margin-right: 0px;
     }
 
-    .dashboard_book_item:not(:nth-child(3n)) {
-        margin-right: 15px;
+    .dashboard_book_container{
+        width: 73%;
     }
 
-    .dashboard_book_item:nth-child(3n) {
+
+    .dashboard_book_item {
+        width: calc(96% /2 );
+    }
+
+    .dashboard_book_item:not(:nth-child(2n)) {
+        margin-right: 15px !important ;
+    }
+
+    .dashboard_book_item:nth-child(2n) {
         margin-right: 0px !important;
-    }
+    }    
+
+
 
 }
 
 
-@media (max-width:620px){
-    .dashboard_book_item {
-        width: calc(94% / 3 );
-    }
-}
+
+
 
 
 @media (max-width:580px){
@@ -216,14 +313,13 @@
         width: 106px;
         height: 106px;
     }
-}
 
-
-@media (max-width:520px){
     .dashboard_book_item {
-        width: calc(93% /3 );
+        width: calc(95% /2 );
     }
 }
+
+
 
 @media (max-width:500px){
     .dashboard_book_item{
@@ -232,22 +328,32 @@
 }
 
 @media (max-width:480px) {
-    .dashboard_book_item {
-        width: calc(96% /2 );
-    }
-
-    .dashboard_book_item:not(:nth-child(2n)) {
-        margin-right: 15px !important;
-    }
-
-    .dashboard_book_item:nth-child(2n) {
-        margin-right: 0px !important;
+   
+    .booksAndMenu{
+        flex-direction: column;
     }
 
 
     .dashboard_book_count{
         padding: 17px;
         width: 70%;
+    }
+
+    .aside_menu{
+        width: 100%;
+    }
+
+
+    .dashboard_book_container{
+        width: 100%;
+    }
+
+    .dashboard_book_item {
+        width: calc(96% /2 );
+    }
+
+    .aside_list_item a{
+        border-bottom: 1px solid #ddd;
     }
 
 }

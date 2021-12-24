@@ -22,7 +22,8 @@ class IndexController extends Controller
         $free_books=$book->free_books();
         $total_info=DB::select("SELECT count(id) as total_book, (select count(id) from users) as total_user,
        (select count(id) from book_categorys) as total_category, (select count(id) from book_authors) as total_author FROM books");
+        $discount=$book->discount();
         return view('frontend.index',compact('special','best_sold','best_book','advice','category_list','new_book','costly_books',
-            'audio_books','free_books','total_info'));
+            'audio_books','free_books','total_info','discount'));
     }
 }

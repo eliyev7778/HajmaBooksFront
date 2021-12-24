@@ -1,0 +1,256 @@
+.acount_details {
+  margin-top: 50px;
+}
+
+.acount_details_heading {
+  margin-bottom: 50px;
+}
+
+.acount_details_heading h1 {
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 49px;
+}
+
+.contact_information {
+  width: 50%;
+}
+
+.contact_information h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  text-transform: capitalize;
+  color: #555963;
+  line-height: 30px;
+}
+
+.contact_information #userImage {
+  display: none;
+}
+
+.contact_information #userImage ~ label img {
+  margin-bottom: 35px;
+  border: 4px solid #6C5DD3;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.contact_information #userImage ~ label img:hover {
+  cursor: pointer;
+}
+
+.contact_information form img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.contact_information form input {
+  margin-bottom: 25px;
+  width: 40%;
+}
+
+.contact_information form input[type="text"],
+.contact_information form input[type="email"],
+.contact_information form input[type="password"] {
+  border-bottom: 1px solid #555963;
+}
+
+.contact_information form input[type="radio"] {
+  display: none;
+}
+
+.contact_information form button {
+  border: 1px solid #6C5DD3;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #6C5DD3;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  margin-bottom: 15px;
+  transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+}
+
+.contact_information form button:hover {
+  color: #6C5DD3;
+  background-color: white;
+}
+
+.contact_information form .radioButton {
+  outline: 2px solid  #555963;
+  outline-offset: 2px;
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  margin-right: 8px;
+}
+
+.contact_information form label {
+  text-transform: capitalize;
+}
+
+.contact_information .gender_container {
+  width: 40%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.contact_information .gender_container label {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 9px;
+}
+
+.js-manGenderLabels span.bgColor,
+.js-womanGenderLabels span.bgColor {
+  background-color: #555963;
+}
+
+.js-manGenderLabels:hover,
+.js-womanGenderLabels:hover {
+  cursor: pointer;
+}
+
+.edit_passsword_container {
+  position: relative;
+  width: 40%;
+}
+
+.edit_passsword_container span {
+  position: absolute;
+  right: 3%;
+  top: 12%;
+}
+
+.edit_passsword_container span:hover {
+  cursor: pointer;
+}
+
+.js_hidePassword {
+  display: none;
+}
+
+@media (max-width: 1125px) {
+  .contact_information {
+    width: 55%;
+  }
+}
+
+@media (max-width: 1005px) {
+  .contact_information form input {
+    width: 45%;
+  }
+  .contact_information .gender_container {
+    width: 45%;
+  }
+  .edit_passsword_container {
+    width: 45%;
+  }
+}
+
+@media (max-width: 930px) {
+  form div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .contact_information .gender_container {
+    width: 100%;
+    -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+            justify-content: unset;
+    -webkit-box-align: unset;
+        -ms-flex-align: unset;
+            align-items: unset;
+  }
+  .contact_information .gender_container label {
+    -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+            justify-content: unset;
+    -webkit-box-align: unset;
+        -ms-flex-align: unset;
+            align-items: unset;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .contact_information form input {
+    width: 100%;
+  }
+  .contact_information .gender_container {
+    width: 100%;
+  }
+  .edit_passsword_container {
+    width: 100%;
+  }
+  .contact_information form input[type="password"] {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .acount_details_heading {
+    margin-bottom: 0px;
+  }
+  .acount_details_heading h1 {
+    font-size: 25px;
+    line-height: 0px;
+  }
+  .acount_details_main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contact_information {
+    margin-top: 50px;
+    width: 91%;
+  }
+  .contact_information form .radioButton {
+    width: 12px;
+    height: 12px;
+  }
+  .contact_information .gender_container label {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+/*# sourceMappingURL=userEdit.css.map */

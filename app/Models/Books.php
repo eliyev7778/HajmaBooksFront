@@ -10,7 +10,7 @@ class Books extends Model
 {
 
     use HasFactory;
-
+    protected $guarded = ['id'];
     public $lang;
 
     public function __construct()
@@ -53,6 +53,18 @@ class Books extends Model
         }
         return $array_data;
     }
+    public function random_books($limit){
+        $array_data=[];
+        $special=Books::inRandomOrder()->limit($limit)
+            ->get(['id','title_'.$this->lang.' as book_name','price','discount','img_front','img_audio','free']);
+        for ($i=0; $i<count($special); $i++){
+            $category=Rl_category_books::select("bc.name_$this->lang as categorys")
+                ->leftJoin("book_categorys as bc", "bc.id", "=", "rl_category_books.category_id")
+                ->where("rl_category_books.book_id",$special[$i]['id'])->get();
+            $array_data[$i]=["books"=>$special[$i],"category"=>$category];
+        }
+        return $array_data;
+    }
     public function costly_books(){
         $array_data=[];
         $special=Books::whereNotNull('price')->WhereNotNull('discount')->WhereNull('img_audio')->orderBy('discount','desc')->limit(3)
@@ -80,7 +92,7 @@ class Books extends Model
     public function free_books(){
         $array_data=[];
         $special=Books::whereNull('price')->orderBy('id','desc')->limit(5)
-            ->get(['id','title_'.$this->lang.' as book_name','price','discount','img_front','img_audio']);
+            ->get(['id','title_'.$this->lang.' as book_name','price','discount','img_front','img_audio','free']);
         for ($i=0; $i<count($special); $i++){
             $category=Rl_category_books::select("bc.name_$this->lang as categorys")
                 ->leftJoin("book_categorys as bc", "bc.id", "=", "rl_category_books.category_id")
@@ -102,4 +114,19 @@ class Books extends Model
          return $data;
      }
 
+     public function discount(){
+             $data=Books::select('books.title_'.$this->lang.' as title','books.img_front','books.img_audio','books.id','books.price','dc.price as dcprice')
+                 ->rightJoin("discounts as dc",'dc.book_id','=','books.id')
+             ->get();
+            return $data;
+     }
+    public function slug($id){
+       $data=BookSlug::select('slug_'.$this->lang.' as slug')->where('book_id',$id)->first();
+       return $data->slug;
+    }
+
+    public function star($id){
+        $star=Star::select(DB::raw("SUM(score) as su, count(book_id) as dd"))->where("book_id",$id)->first();
+        return $star->su>0 ? round($star->su/$star->dd,2) : 0;
+    }
 }

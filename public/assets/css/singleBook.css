@@ -73,7 +73,7 @@
     align-items: center;
     width: calc( 96% / 4 );
     text-decoration: none;
-    
+
 }
 
 .sosial_item:hover{
@@ -90,7 +90,7 @@
 
 .whatsapp_item{
     background-color: #53C258;
-    
+
 }
 
 .mail_item{
@@ -148,8 +148,8 @@
 
 
 .book_price{
-    width: 29%;
     display: flex;
+    width: 39%;
     justify-content: space-between;
     align-items: center;
 }
@@ -174,7 +174,8 @@
 
 
 .book_price_btns{
-    width: 34%;
+    display: flex;
+    width: 40%;
     justify-content: space-between;
 }
 
@@ -214,11 +215,49 @@
     align-items: center;
     text-decoration: none;
     width: 182px;
-    
+
 }
+
 
 .buy_btn:hover{
     color: white;
+}
+
+
+
+.now_buy_btn{
+    background-color: #6C5DD3 ;
+    padding: 10px;
+    color: white;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 182px;
+    animation-name: nowBuy;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.now_buy_btn:hover{
+    color: white;
+}
+
+@keyframes nowBuy {
+    0%,100%{
+        background-color:  #6C5DD3 ;
+
+    }
+    50%{
+        background-color:  red ;
+
+     }
 }
 
 
@@ -259,7 +298,7 @@ table {
     box-shadow: 0 1px 1px #ccc;
 }
 .bordered tr:hover {
-    background: #ECECEC;    
+    background: #ECECEC;
     -webkit-transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;
     transition: all 0.1s ease-in-out;
@@ -271,8 +310,8 @@ table {
     text-align: left;
 }
 .bordered th {
-    
-    background-image: -moz-linear-gradient(top, #F8F8F8, #ECECEC);    
+
+    background-image: -moz-linear-gradient(top, #F8F8F8, #ECECEC);
     background-image: linear-gradient(top, #F8F8F8, #ECECEC);
     -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
     -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
@@ -304,16 +343,16 @@ table {
     -moz-border-radius: 0 0 6px 0;
     -webkit-border-radius: 0 0 6px 0;
     border-radius: 0 0 6px 0;
-} 
+}
 
 .table_tags{
     background: #F0EEFF;
     border-radius: 11.241px;
-    padding: 5px; 
+    padding: 5px;
     font-size: 13px;
     color: #6C5DD3;
     margin-top: 3px;
-    
+
 }
 
 .tags{
@@ -366,7 +405,7 @@ table {
 .item_category span{
     color:#6C5DD3 ;
     font-size: 12px;
-    
+
 }
 
 .item_rewiev{
@@ -377,14 +416,14 @@ table {
     margin-bottom: 5px;
 }
 .item_add_to_cart{
-    color: #451355;   
+    color: #451355;
     text-decoration: none;
     margin-top: 15px;
 }
 
 .item_add_to_cart:hover{
-    color: #451355;  
-  
+    color: #451355;
+
 }
 
 .add_comment{
@@ -400,7 +439,7 @@ table {
 
 
 .input_container{
-   
+
     width: 90%;
     padding: 10px;
 }
@@ -435,10 +474,11 @@ table {
     margin-top: 20px;
 }
 
-
-.user_commrnt_list_item{
-
+.user_comments_list li:not(:last-child){
+    border-bottom: 1px solid #ddd;
 }
+
+
 
 .user_img{
     min-width: 50px;
@@ -458,9 +498,7 @@ table {
     -o-border-radius: 50%;
 }
 
-.user_comment_container{
 
-}
 
 .user_name{
     margin-bottom: 0px;
@@ -472,6 +510,94 @@ table {
 
 .user_comment_text{
     margin-left: 5px;
+}
+
+
+.book_description{
+    text-align: justify;
+}
+
+
+.audioDropDownBtn_container{
+    width: 100%;
+}
+
+
+
+.audioDropDownBtn{
+    text-decoration: none;
+    padding: 5px;
+    color: white;
+    width: 100%;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    background-color: #6C5DD3;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.audioDropDownBtn i{
+    color: white;
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -ms-transition: all .1s linear;
+    -o-transition: all .1s linear;
+}
+
+.audioDropDownBtn i.my_rotate{
+    transform: rotateZ(-180deg);
+    -webkit-transform: rotateZ(-180deg);
+    -moz-transform: rotateZ(-180deg);
+    -ms-transform: rotateZ(-180deg);
+    -o-transform: rotateZ(-180deg);
+}
+
+
+.audioDropDownBtn:hover{
+    color: white;
+}
+
+.book_audio_list{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+
+
+
+.book_audio_item{
+    padding: 10px 5px;
+    border-bottom: 1px solid #ddd;
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -ms-transition: all .1s linear;
+    -o-transition: all .1s linear;
+}
+
+
+
+.book_audio_item:hover{
+    background-color: #ddd;
+}
+
+
+.audio_number{
+    font-weight: 500;
+
+}
+
+
+.audio_title{
+    text-transform: capitalize;
+
+
 }
 
 
@@ -489,7 +615,7 @@ table {
 @media (max-width:1345px){
     .book_price_btns {
         width: 42%;
-    }    
+    }
 }
 
 
@@ -553,7 +679,7 @@ table {
     .book_price_btns {
         width: 50%;
     }
-    
+
     .bordered th {
         width: 38%;
     }
@@ -586,6 +712,9 @@ table {
     .sosial_item{
         font-size: 13px;
     }
+
+
+
 }
 
 
@@ -711,7 +840,7 @@ table {
         width: 65%;
     }
 
-   
+
 
 
 
@@ -768,7 +897,7 @@ table {
 }
 
 @media (max-width:700px){
-    
+
     .author{
         width: unset;
     }
@@ -787,7 +916,7 @@ table {
     }
 
     .sosial_item{
-       
+
         width: initial !important ;
         padding: 12px 15px;
         border-radius:50% ;
@@ -803,9 +932,9 @@ table {
 
     .sosial_networks_container{
         width: 100% !important;
-        
+
     }
-    
+
 
     .details_section {
         margin: 0px;
@@ -855,10 +984,67 @@ table {
 }
 
 
+.rateus_container > button {
+    border-radius:5px ;
+    padding: 5px;
+    -webkit-border-radius:5px ;
+    -moz-border-radius:5px ;
+    -ms-border-radius:5px ;
+    -o-border-radius:5px ;
+    text-transform: capitalize;
+}
+
+
+.star-rating {
+    border:solid 1px #ddd;
+    border-radius: 5px;
+    display:flex;
+    flex-direction: row-reverse;
+    font-size:2em;
+    justify-content:space-around;
+    padding:0 .2em;
+    text-align:center;
+    width:5em;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+  .star-rating input {
+    display:none;
+  }
+
+  .star-rating label {
+    color:#ccc;
+    cursor:pointer;
+  }
+
+  .star-rating :checked ~ label {
+    color:#f90;
+  }
+
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    color:#fc0;
+  }
+
+
+  .modal-body button{
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      padding: 0px 15px;
+      font-size: 21px;
+}
+
+
 
 @media (max-width:670px){
     .book_price_btns {
-        
+
         width: 71%;
     }
 
@@ -889,12 +1075,12 @@ table {
         width: 196px;
     }
 
-    
+
     .book_description {
         width: 65%;
     }
 
-   
+
 
 }
 
@@ -954,11 +1140,29 @@ table {
         padding: 5px;
     }
 
+    .book_description p{
+        font-size: 15px;
+    }
+
 }
 
 /*  ******************  Mobil design start from here  ******************* */
 @media (max-width : 480px){
+    .book_description p{
+        font-size: 13px;
+    }
 
+    .details_left h2{
+        font-size: 17px;
+    }
+    .book_name{
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .send_comment_btn{
+        padding: 10px 12px;
+    }
 }
 
 
@@ -1014,7 +1218,7 @@ table {
 
 @media (max-width:350px){
     .related_item{
-        width: calc( 96% / 2 ); 
+        width: calc( 96% / 2 );
     }
 }
 

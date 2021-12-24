@@ -85,7 +85,7 @@ $( document ).ready(function() {
 
     $('#desktopSearch').on('keyup',function(){
         if($(this).val().length>0){
-            var search=$(this).val();
+            const search = $(this).val();
             $('#desktop_result').css({'display':'flex'});
             $.ajax({
                 type:'post',
@@ -114,5 +114,132 @@ $( document ).ready(function() {
             $('#desktop_result').css({'display':'none'});
         }
     });
+
+    $(".send_comment_btn").on('click',function () {
+      const user=$(this).data('user');
+      const book=$(this).data('book');
+      const comment=$("#userComment").val();
+        $.ajax({
+            type:'post',
+            url:"/post-comment",
+            data:{user:user,book:book,comment:comment},
+            success:function(e){
+               if (e[0]==false){
+                   alertify.error(e[1]);
+               }else{
+                   alertify.success(e[1]);
+                   $("#appendComment").load(location.href + " #appendComment");
+                   $("#userComment").val("");
+               }
+            }
+        });
+    })
+    $(".js-delete-comment").on("click",function () {
+       const id=$(this).data('id');
+        $.ajax({
+            type:'post',
+            url:"/delete-comment",
+            data:{id:id},
+            success:function(e){
+                alertify.success(e);
+                $(".js-delete-comment-"+id).remove();
+            }
+        });
+    });
+    $(".js-like-book").on('click',function () {
+        const id=$(this).data('id');
+        $.ajax({
+            type:'post',
+            url:"/like-book",
+            data:{id:id},
+            success:function(e){
+                if (e[0]==false){
+                    alertify.error(e[1]);
+                }else{
+                    alertify.success(e[1]);
+                    $("#js-append-data").load(location.href + " #js-append-data");
+                }
+            }
+        });
+    })
+    $(".js-star").on("click",function () {
+        const book_id = $("#js-book-id").data("id");
+        const score=$(this).val();
+        $.ajax({
+            type:'post',
+            url:"/star-book",
+            data:{book_id:book_id,score:score},
+            success:function(e){
+                if (e[0]==false){
+                    alertify.error(e[1]);
+                }else{
+                    alertify.success(e[1]);
+                    $("#js-append-data").load(location.href + " #js-append-data");
+                }
+            }
+        });
+
+    })
+    const userStar=$("#user-star").val();
+    if ($.isNumeric(userStar)){
+        $(".star-rating").find('input[value="'+userStar+'"]').prop('checked',true);
+    }
+
+    $("#js-add-cart").on('click',function () {
+      const id=$(this).data("id");
+        $.ajax({
+            type:'post',
+            url:"/add-cart",
+            data:{id:id},
+            success:function(e){
+                if (e[0]==false){
+                    alertify.error(e[1]);
+                }else{
+                    alertify.success(e[1]);
+                }
+            }
+        });
+    })
+    $(".js-delete-cart").on('click',function () {
+        const id=$(this).data("id");
+        $.ajax({
+            type:'post',
+            url:"/delete-cart",
+            data:{id:id},
+            success:function(e){
+                    alertify.success(e[1]);
+                   $(".js-delete-cart-"+id).remove()
+                  $("#js-append-total").load(location.href + " #js-append-total");
+            }
+        });
+    })
+
+    $('#userImage').on('change',function(e){
+        const [file] = $(this).prop('files');
+        var imageUrl =URL.createObjectURL(file);
+        if (file) {
+            $(this).siblings('label').find('img').attr('src',imageUrl);
+
+        }
+    })
+
+    $('.js_showPassword').on('click',function(){
+        $(this).siblings('input').attr('type','text');
+        $(this).css({"display":"none"});
+        $('.js_hidePassword').css({'display':'inline-block'});
+
+    })
+
+    $('.js_hidePassword').on('click',function(){
+        $(this).siblings('input').attr('type','password');
+        $(this).css({'display':'none'});
+        $('.js_showPassword').css({'display':'inline-block'});
+    })
+
 });
+
+
+
+
+
 

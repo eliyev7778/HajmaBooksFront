@@ -28,7 +28,7 @@ return [
     'discount'=>'İndirim',
     'readMore'     => 'Devamını oku',
     'otherPromos' => 'Diğer Promosyonları Gör',
-    'bestSeller'=>'En çok satan kitaplar',
+    'bestSeller'=>'Çok satan kitaplar',
     'salesWeek'     => 'Bu hafta en çok satılan',
     'recomended' => 'Sizin için önerilen',
     'popularBooks'=>'Popüler kitaplar',
@@ -38,10 +38,12 @@ return [
     'book'=>'Kitap',
     'user'=>'Kullanıcı',
     'author'=>'Yazar',
+    'authors'=>'Yazarlar',
     'category'=>'Kategori',
     'subscriber'=>'En yeni kitap güncellemeleri için bültenimize abone olun',
     'typeEmail'=>'e-postanı yaz',
     'submit'=>'Gönder',
     'fllowUs'=>'Bizi takip edin',
-    'dontMissBook'=>'En yeni kitapları kaçırmayın'
+    'dontMissBook'=>'En yeni kitapları kaçırmayın',
+    'free'=>"Bedava"
 ];

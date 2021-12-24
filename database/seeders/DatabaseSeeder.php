@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,6 +22,9 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make("admin123@#"),
             'status'=>2,
             'img'=>asset(\Storage::url("user.png"))
+        ]);
+        DB::table('discount_times')->insert([
+            'updated_at' => Carbon::now()
         ]);
     }
 }

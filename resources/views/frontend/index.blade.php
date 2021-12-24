@@ -36,7 +36,7 @@
                                            </p>
                                         </h3>
                                         <div class="pagetop_buttons d-flex justify-content-between ">
-                                            <a class="get_deal_btn" href="javascript:void(0)">
+                                            <a class="get_deal_btn" href="{{route('book',(new \App\Models\Books())->slug($key['books']->id))}}">
                                                 @lang('index.readMore') <i class="fas fa-long-arrow-alt-right"></i>
                                             </a>
                                             <a class="see_others" href="javascript:void(0)">
@@ -64,15 +64,18 @@
                     <div class="slider_right_continer w-100 ">
                         <div id="carouselExampleControls" class="carousel slide h-100" data-bs-ride="carousel">
                             <div class="carousel-inner w-100 h-100 ">
-                                 @foreach($best_sold as $key)
+                                @foreach($best_sold as $key)
+
                                 <div class="carousel-item  w-100 h-100  js-first-best-sold-active">
                                     <div
                                         class="pagetop_rightslider_item d-flex flex-column align-items-center justify-content-center ">
                                         <h2 class="right_item_title">@lang('index.bestSeller')</h2>
                                         <span class="rigth_item_excerpt">@lang('index.salesWeek')</span>
                                         <div class="pagetop_book_img">
+                                            <a href="{{route('book',(new \App\Models\Books())->slug($key['books']->id))}}">
                                             <img src="{{$key['books']->img_front==null ? $key['books']->img_audio : $key['books']->img_front}}" alt="pagetop_book"
                                                  class="w-100 h-100 ">
+                                            </a>
                                         </div>
                                         <h2 class="pushing_clouds">
                                             {{$key['books']->book_name}}
@@ -85,14 +88,19 @@
                                             @endforeach
                                              </p>
                                         <div class="pagotop_right_price_continer">
-                                            <span class="old_price"><del>60.00</del></span>
-                                            <span class="new_price"> USD <span class="price_count">45.25</span>
-                                                </span>
+                                            @if(is_null($key['books']->discount))
+                                            <span class="new_price"> USD <span class="price_count">{{$key['books']->price}}</span></span>
+                                            @else
+                                                <span class="old_price"><del>$ {{$key['books']->price}}</del></span>
+                                                <span class="new_price"> USD <span class="price_count">{{$key['books']->discount}}</span></span>
+                                                @endif
                                         </div>
                                     </div>
                                 </div>
+
                                 @endforeach
                             </div>
+
                             <button class="carousel-control-prev" type="button"
                                     data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"><i
@@ -179,7 +187,7 @@
                             <div class="recomended_swipe_container  w-100 ">
                                   @foreach($best_book as $key)
                                 <div class="recomended_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
+                                    <a href="{{route('book',(new \App\Models\Books())->slug($key->id))}}" target="_self" class="w-100 h-100 ">
                                         <img src="{{$key->img_front==null ? $key->img_audio : $key->img_front}}" alt="book_image">
                                     </a>
                                 </div>
@@ -216,7 +224,7 @@
                             <div class="popular_swipe_container  w-100 ">
                                 @foreach($advice as $key)
                                 <div class="popular_item">
-                                    <a href="javascript:void(0)" target="_self" class="w-100 h-100 ">
+                                    <a href="{{route('book',(new \App\Models\Books())->slug($key->id))}}" target="_self" class="w-100 h-100 ">
                                         <img src="{{$key->img_front==null ? $key->img_audio : $key->img_front}}" alt="book_image">
                                     </a>
                                 </div>
@@ -260,7 +268,7 @@
         <div class="center">
             <div class="categoriy_section_title w-100 d-flex justify-content-between ">
                 <h2>@lang('index.newBooks')</h2>
-                <a class="see_all" href="#" target="_self">
+                <a class="see_all" href="{{route('books')}}" target="_self">
                    @lang('index.seeAll')
                 </a>
             </div>
@@ -274,12 +282,12 @@
                                {{(new \App\Helper\index())->interest($key['books']->price,$key['books']->discount)}}
                             </span>
                         @endif
-                        <a class="item_img" href="#" target="_self">
+                        <a class="item_img" href="{{route('book',(new \App\Models\Books())->slug($key['books']->id))}}" target="_self">
                             <img src="{{$key['books']->img_front==null ? $key['books']->img_audio : $key['books']->img_front}}" alt="new_books">
                         </a>
                     </div>
                     <div class="book_item_bottom w-100 ">
-                        <a href="#">
+                        <a href="{{route('book',(new \App\Models\Books())->slug($key['books']->id))}}">
                             <h5>{{$key['books']->book_name}}</h5>
                         </a>
                         <div class="book_type_contianer d-flex  flex-wrap  w-100">
@@ -288,13 +296,17 @@
                             @endforeach
                         </div>
                         <div class="imdb_container w-100 d-flex justify-content-between">
-                            <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
+                            <span class="imdb_count"><i class="fas fa-star"></i> <span>{{(new \App\Models\Books())->star($key['books']->id)}}</span></span>
                             <div>
-                                @if($key['books']->discount!=null)
-                                <span class="new_price"> $ {{$key['books']->discount}} </span>
-                                <span class="old_price"> <del>$ {{$key['books']->price}}</del> </span>
+                                @if($key['books']->free==1)
+                                    <span class="new_price"> @lang('index.free') </span>
                                 @else
-                                    <span class="new_price"> $ {{$key['books']->price}} </span>
+                                    @if($key['books']->discount!=null)
+                                        <span class="new_price"> $ {{$key['books']->discount}} </span>
+                                        <span class="old_price"> <del>$ {{$key['books']->price}}</del> </span>
+                                    @else
+                                        <span class="new_price"> $ {{$key['books']->price}} </span>
+                                    @endif
                                 @endif
                             </div>
                         </div>
@@ -311,7 +323,7 @@
                 <div class="boks3_lelft h-100  d-flex justify-content-between  ">
                     <div class="boks_left_text   d-flex  justify-content-between ">
                         <div class="boks_left_text_author pagetop_subtitle">
-                            <a href="javascript:void(0)">
+                            <a href="{{route('book',(new \App\Models\Books())->slug($costly_books[0]['books']->id))}}">
                                 <h2 class="boks3_left_title">{{$costly_books[0]['books']->book_name}}</h2>
                             </a>
                             <p>
@@ -336,7 +348,7 @@
                         </div>
 
                     </div>
-                    <a href="javascript:void(0)" class="boks3_left_img">
+                    <a href="{{route('book',(new \App\Models\Books())->slug($costly_books[0]['books']->id))}}" class="boks3_left_img">
                         <img src="{{$costly_books[0]['books']->img_front}}" alt="3boks_image">
                     </a>
                 </div>
@@ -344,7 +356,7 @@
                 <div class="boks3_right d-flex flex-column justify-content-between ">
 
                     <div class="boks3_right_item d-flex w-100 justify-content-between ">
-                        <a class="right_item_img" href="#">
+                        <a class="right_item_img" href="{{route('book',(new \App\Models\Books())->slug($costly_books[1]['books']->id))}}">
                             <img src="{{$costly_books[1]['books']->img_front}}" alt="right_item_book">
                         </a>
                         <div class="boks3_right_text  d-flex justify-content-between ">
@@ -368,13 +380,15 @@
                                     </del>
 
                                 </div>
+                                <a href="{{route('book',(new \App\Models\Books())->slug($costly_books[1]['books']->id))}}">
                                 <button class="buy_now_btn" style="margin-left: 0px;"> @lang('index.buy') </button>
+                                </a>
                             </div>
                         </div>
                     </div>
 
                     <div class="boks3_right_item d-flex w-100 justify-content-between ">
-                        <a class="right_item_img" href="#">
+                        <a class="right_item_img" href="{{route('book',(new \App\Models\Books())->slug($costly_books[2]['books']->id))}}">
                             <img src="{{$costly_books[2]['books']->img_front}}" alt="right_item_book">
                         </a>
                         <div class="boks3_right_text  d-flex justify-content-between ">
@@ -396,9 +410,10 @@
                                                 style="color: white; line-height:32px; margin-right: 5px; "> $ {{$costly_books[2]['books']->price}}
                                             </span>
                                     </del>
-
                                 </div>
+                                <a href="{{route('book',(new \App\Models\Books())->slug($costly_books[2]['books']->id))}}" >
                                 <button class="buy_now_btn" style="margin-left: 0px;"> @lang('index.buy') </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -418,12 +433,12 @@
                                {{(new \App\Helper\index())->interest($key['books']->price,$key['books']->discount)}}
                             </span>
                                 @endif
-                                <a class="item_img" href="#" target="_self">
+                                <a class="item_img" href="{{route('book',(new \App\Models\Books())->slug($key['books']->id))}}" target="_self">
                                     <img src="{{$key['books']->img_front==null ? $key['books']->img_audio : $key['books']->img_front}}" alt="new_books">
                                 </a>
                             </div>
                             <div class="book_item_bottom w-100 ">
-                                <a href="#">
+                                <a href="{{route('book',(new \App\Models\Books())->slug($key['books']->id))}}">
                                     <h5>{{$key['books']->book_name}}</h5>
                                 </a>
                                 <div class="book_type_contianer d-flex  flex-wrap  w-100">
@@ -462,6 +477,7 @@
                             @lang('index.limitedDiscount')
                         </h3>
                         <div class="timer_container">
+                            <p style="display: none;" id="discount-price">{{(new \App\Models\DiscountTime())->first()->updated_at}}</p>
                             <div id="timer" class="d-flex">
                                 <div id="days"></div>
                                 <span class="dots">:</span>
@@ -482,11 +498,11 @@
                             <i class="fas fa-arrow-right"></i>
                         </button>
                         <div class="flash_swipe_container d-flex ">
-
+                              @foreach($discount as $key)
                             <div class="swipe_item d-flex ">
                                 <div class="swipe_item_img">
-                                    <a href="javascript:void(0)" class="w-100 h-100">
-                                        <img src="./assets/images/books3.jpg" alt="flash_sale_img">
+                                    <a href="{{route('book',(new \App\Models\Books())->slug($key->id))}}" class="w-100 h-100">
+                                        <img src="{{$key->img_front==null ? $key->img_audio : $key->img_front}}" alt="flash_sale_img">
                                     </a>
                                 </div>
                                 <div class="swipe_item_text d-flex flex-column position-relative ">
@@ -501,18 +517,18 @@
                                             </span>
                                     </div>
 
-                                    <a href="javascript:void(0)" class="book_name">
-                                        Story of Everest
+                                    <a href="{{route('book',(new \App\Models\Books())->slug($key->id))}}" class="book_name">
+                                        {{$key->title}}
                                     </a>
-
-                                    <p class="book_autor">Henry Martopo</p>
-
+                                    @foreach((new \App\Models\Books())->single_book_categorys($key->id) as $key2 )
+                                        <span class="book_type mt-2">{{$key2->category_name}}</span>
+                                    @endforeach
                                     <div class="book_price d-flex">
                                             <span class="book_new_price">
-                                                $21.99
+                                                ${{$key->dcprice}}
                                             </span>
                                         <span class="book_old_price">
-                                                <del>$25</del>
+                                                <del>${{$key->price}}</del>
                                             </span>
                                     </div>
                                     <button class="add_to_cart_btn">
@@ -526,94 +542,7 @@
                                     </p>
                                 </div>
                             </div>
-
-                            <div class="swipe_item d-flex ">
-                                <div class="swipe_item_img">
-                                    <a href="javascript:void(0)" class="w-100 h-100">
-                                        <img src="./assets/images/books3.jpg" alt="flash_sale_img">
-                                    </a>
-                                </div>
-                                <div class="swipe_item_text d-flex flex-column position-relative ">
-
-                                    <div class=" swipe_item_text_top d-flex justify-content-between ">
-                                        <span class="book_type">adventure</span>
-                                        <div class="Stars" style="--rating: 4"
-                                             aria-label="Rating of this product is 2.3 out of 5.">
-                                        </div>
-                                        <span class="rate_count">
-                                                (459)
-                                            </span>
-                                    </div>
-
-                                    <a href="javascript:void(0)" class="book_name">
-                                        Story of Everest
-                                    </a>
-
-                                    <p class="book_autor">Henry Martopo</p>
-
-                                    <div class="book_price d-flex">
-                                            <span class="book_new_price">
-                                                $21.99
-                                            </span>
-                                        <span class="book_old_price">
-                                                <del>$25</del>
-                                            </span>
-                                    </div>
-                                    <button class="add_to_cart_btn">
-                                        <i class="fas fa-shopping-basket"></i>
-                                    </button>
-
-                                    <progress value="65" max="100"></progress>
-
-                                    <p class="left_books">
-                                        <span>45</span> books left
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="swipe_item d-flex ">
-                                <div class="swipe_item_img">
-                                    <a href="javascript:void(0)" class="w-100 h-100">
-                                        <img src="./assets/images/books3.jpg" alt="flash_sale_img">
-                                    </a>
-                                </div>
-                                <div class="swipe_item_text d-flex flex-column position-relative ">
-
-                                    <div class=" swipe_item_text_top d-flex justify-content-between ">
-                                        <span class="book_type">adventure</span>
-                                        <div class="Stars" style="--rating: 4"
-                                             aria-label="Rating of this product is 2.3 out of 5.">
-                                        </div>
-                                        <span class="rate_count">
-                                                (459)
-                                            </span>
-                                    </div>
-
-                                    <a href="javascript:void(0)" class="book_name">
-                                        Story of Everest
-                                    </a>
-
-                                    <p class="book_autor">Henry Martopo</p>
-
-                                    <div class="book_price d-flex">
-                                            <span class="book_new_price">
-                                                $21.99
-                                            </span>
-                                        <span class="book_old_price">
-                                                <del>$25</del>
-                                            </span>
-                                    </div>
-                                    <button class="add_to_cart_btn">
-                                        <i class="fas fa-shopping-basket"></i>
-                                    </button>
-
-                                    <progress value="65" max="100"></progress>
-
-                                    <p class="left_books">
-                                        <span>45</span> books left
-                                    </p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -627,17 +556,12 @@
                 @foreach($free_books as $key)
                     <div class="new_books_item ">
                         <div class="new_books_image_container w-100">
-                            @if($key['books']->discount!=null)
-                                <span class="discount_percentage">
-                               {{(new \App\Helper\index())->interest($key['books']->price,$key['books']->discount)}}
-                            </span>
-                            @endif
-                            <a class="item_img" href="#" target="_self">
+                            <a class="item_img" href="{{route('book',(new \App\Models\Books())->slug($key['books']->id))}}" target="_self">
                                 <img src="{{$key['books']->img_front==null ? $key['books']->img_audio : $key['books']->img_front}}" alt="new_books">
                             </a>
                         </div>
                         <div class="book_item_bottom w-100 ">
-                            <a href="#">
+                            <a href="{{route('book',(new \App\Models\Books())->slug($key['books']->id))}}">
                                 <h5>{{$key['books']->book_name}}</h5>
                             </a>
                             <div class="book_type_contianer d-flex  flex-wrap  w-100">
@@ -648,12 +572,7 @@
                             <div class="imdb_container w-100 d-flex justify-content-between">
                                 <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
                                 <div>
-                                    @if($key['books']->discount!=null)
-                                        <span class="new_price"> $ {{$key['books']->discount}} </span>
-                                        <span class="old_price"> <del>$ {{$key['books']->price}}</del> </span>
-                                    @else
-                                        <span class="new_price"> $ {{$key['books']->price}} </span>
-                                    @endif
+                                        <span class="new_price">@lang('index.free') </span>
                                 </div>
                             </div>
                         </div>
@@ -718,25 +637,7 @@
         </div>
     </section>
 
-    <section class="subscribe_section  ">
-        <div class="center">
-            <div class="subscribe_in w-100 d-flex align-items-center justify-content-center ">
-                <div class="subscribe_in_main  d-flex  justify-content-between align-items-center  ">
-                    <div class="subscirbe_text">
-                        <p>
-                            @lang('index.subscriber')
-                        </p>
-                    </div>
-                    <div class="subscribe_inputs d-flex justify-content-between ">
-                        <input type="text" required placeholder="@lang('index.typeEmail') ">
-                        <button type="button" class="subscribe_btn">
-                            @lang('index.submit')
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-subscribe/>
 
 </main>
 @endsection

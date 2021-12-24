@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    {{-- alertify --}}
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 </head>
 <body>
 <header class="w-100">
@@ -59,7 +64,7 @@
                     <img src="/assets/css/logo/user_icon.svg" alt="user_icon" width="20px" height="20px"> @lang('index.signup')
                 </a>
                 @else
-                    <a href="{{route('login')}}" target="_self" class="signup_btn">
+                    <a href="{{route('dashboard')}}" target="_self" class="signup_btn">
                         <img src="/assets/css/logo/user_icon.svg" alt="user_icon" width="20px" height="20px"> {{\Auth::user()->name}}
                     </a>
                   @endif
@@ -95,30 +100,30 @@
             <nav class="navbar">
                 <ul class="navbar_list">
                     <li class="nav_list_item">
-                        <a href="{{route('index')}}" target="_self" class="my_active">
+                        <a href="{{route('index')}}" target="_self" class="{{Route::is('index') ? "my_active" : "" }}">
                             @lang('index.home')
                         </a>
                     </li>
                     <li class="nav_list_item">
-                        <a href="javascript:void(0)" target="_self">
+                        <a href="{{route('books')}}" target="_self" class="{{Route::is('books') ? "my_active" : "" }}">
                             @lang('index.books')
                         </a>
                     </li>
                     <li class="nav_list_item">
-                        <a href="javascript:void(0)" target="_self">
+                        <a href="{{route('audio-books')}}" target="_self" class="{{Route::is('audio-books') ? "my_active" : "" }}">
                             @lang('index.audioBooks')
                         </a>
                     </li>
                     <li class="nav_list_item">
-                        <a href="javascript:void(0)" target="_self">
+                        <a href="{{route('collections')}}" target="_self" class="{{Route::is('collections') ? "my_active" : "" }}">
                             @lang('index.collections')
                         </a>
                     </li>
-{{--                    <li class="nav_list_item">--}}
-{{--                        <a href="javascript:void(0)" target="_self">--}}
-{{--                            @lang('index.onsale')--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                    <li class="nav_list_item">
+                        <a href="javascript:void(0)" target="_self">
+                            @lang('index.authors')
+                        </a>
+                    </li>
                     <li class="nav_list_item">
                         <a href="/contact.html" target="_self">
                             @lang('index.contact')
@@ -225,6 +230,7 @@
                             sign up
                         </a>
                     </li>
+
                 </ul>
             </div>
 
@@ -286,13 +292,13 @@
     <div class="mobile_header_in  d-flex flex-column">
         <ul class="mobile_h_list d-flex flex-column ">
             <li class="mobile_h_listitem">
-                <a href="javascript:void(0)">
+                <a href="{{route('index')}}">
                     @lang('index.home')
                 </a>
             </li>
 
             <li class="mobile_h_listitem">
-                <a href="javascript:void(0)">
+                <a href="{{route('books')}}">
                     @lang('index.books')
                 </a>
             </li>
@@ -359,12 +365,33 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"></script>
-
+{{-- alertify --}}
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <!-- Header JS file -->
 <script src="/assets/js/header.js"></script>
 <script src="/assets/js/swiper.js"></script>
 <script src="/assets/js/main.js"></script>
+@if(session()->has('success'))
+    <script type="text/javascript">
+        alertify.success('{{session('success')}}');
+    </script>
+@endif
+@if(session()->has('error'))
+    <script type="text/javascript">
+        alertify.error('{{session('error')}}');
+    </script>
+@endif
 
+{{-- Validation --}}
+@if ($errors->any())
+    <ul>
+        @foreach ($errors->all() as $error)
+            <script type="text/javascript">
+                alertify.error('{{ $error }}');
+            </script>
+        @endforeach
+    </ul>
+@endif
 <script>
 
     scrollFunction('.swipe_left_btn', '.swipe_right_btn', '.recomended_swipe_container');
@@ -449,9 +476,9 @@
     })
 
     /****************Timeri isletemek  ucun JS***************/
-
+    var disTime=$("#discount-price").html();
     function makeTimer() {
-        var endTime = new Date("22 october 2021 14:15:00 GMT+04:00");
+        var endTime = new Date(disTime);
         endTime = (Date.parse(endTime) / 1000);
         var now = new Date();
         now = (Date.parse(now) / 1000);
