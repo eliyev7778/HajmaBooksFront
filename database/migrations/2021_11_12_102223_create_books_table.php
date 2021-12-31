@@ -29,8 +29,8 @@ class CreateBooksTable extends Migration
             $table->integer("see")->default(0);
             $table->integer("sold")->default(0);
             $table->integer("status")->nullable();
-            $table->float("price",4,2)->nullable();
-            $table->float("discount",4,2)->nullable();
+            $table->float("price",4)->nullable();
+            $table->float("discount",4)->nullable();
             $table->integer("languages_id");
             $table->integer("seller_id");
             $table->integer("user_id");

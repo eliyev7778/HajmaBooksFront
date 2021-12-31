@@ -50,4 +50,9 @@ class DashboardController extends Controller
 
         return redirect(route('dashboard'))->with('success',__("dashboard.editSuccess"));
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect(route('index'));
+    }
 }

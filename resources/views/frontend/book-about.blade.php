@@ -146,11 +146,11 @@
                                     <img src="/./assets/css/logo/basket.svg" alt="basket_image"> @lang('book-about.addToCart')
                                 </a>
                                 @if($discount==null)
-                                <a class="buy_btn " href="javascript:void(0)">
+                                <a class="buy_btn " href="{{route('buy',$book->id)}}">
                                     <img src="/./assets/css/logo/book_icon.svg" alt="book_image" class="mx-1"> @lang('book-about.buy')
                                 </a>
                                 @else
-                                <a class="now_buy_btn " href="javascript:void(0)">
+                                <a class="now_buy_btn7" href="{{route('buy',$book->id)}}">
                                     @lang('book-about.buy')  {{$book->price}} $
                                 </a>
                                     @endif
@@ -294,8 +294,6 @@
                         </ul>
                         </div>
                     </div>
-
-
                 </div>
                 <div class="details_right  ">
                     <h2> @lang('book-about.relatedBooks') </h2>

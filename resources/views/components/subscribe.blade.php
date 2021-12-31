@@ -8,12 +8,15 @@
                             @lang('index.subscriber')
                         </p>
                     </div>
+                    <form method="post" action="{{route('subscriber')}}">
+                        @CSRF
                     <div class="subscribe_inputs d-flex justify-content-between ">
-                        <input type="text" required placeholder="@lang('index.typeEmail') ">
-                        <button type="button" class="subscribe_btn">
+                        <input type="email" name="email" required placeholder="@lang('index.typeEmail') ">
+                        <button type="submit" class="subscribe_btn">
                             @lang('index.submit')
                         </button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

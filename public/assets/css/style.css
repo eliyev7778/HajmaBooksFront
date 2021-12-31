@@ -10,6 +10,8 @@
 @import url('./contact.css');
 @import url('./userEdit.css');
 @import url('./collection.css');
+@import url('./authors.css');
+@import url('./singleAuthor.css');
 
 *{
     font-family: 'Montserrat';
@@ -661,7 +663,6 @@
 .categoriy_section_title h2 {
     font-size: 44px;
     font-weight: 700;
-    text-transform: uppercase;
 }
 
 .category_inner{

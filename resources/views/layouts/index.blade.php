@@ -120,12 +120,12 @@
                         </a>
                     </li>
                     <li class="nav_list_item">
-                        <a href="javascript:void(0)" target="_self">
+                        <a href="{{route('authors')}}" target="_self" class="{{Route::is('authors') ? "my_active" : "" }}">
                             @lang('index.authors')
                         </a>
                     </li>
                     <li class="nav_list_item">
-                        <a href="/contact.html" target="_self">
+                        <a href="{{route('contact')}}" target="_self" class="{{Route::is('contact') ? "my_active" : "" }}">
                             @lang('index.contact')
                         </a>
                     </li>
@@ -160,42 +160,6 @@
                 <a href="javascript:void(0)" class="footer_logo_img">
                     <img src="/assets/css/logo/header_logo.png" alt="footer_logo">
                 </a>
-                <div class="sosial_networks">
-                    <h5>@lang('index.fllowUs')</h5>
-
-                    <ul class="sosial_networks_list d-flex ">
-                        <li class="sosial_network_item">
-                            <a href="javascript:void(0)">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-
-                        <li class="sosial_network_item">
-                            <a href="javascript:void(0)">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </li>
-
-                        <li class="sosial_network_item">
-                            <a href="javascript:void(0)">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-
-                        <li class="sosial_network_item">
-                            <a href="javascript:void(0)">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                        </li>
-
-                        <li class="sosial_network_item">
-                            <a href="javascript:void(0)">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
             </div>
 
             <div class="quick_links">
@@ -208,8 +172,8 @@
                     </li>
 
                     <li class="quick_links_item">
-                        <a href="javascript:void(0)">
-                            contact us
+                        <a href="{{route('contact')}}">
+                            @lang('index.contact')
                         </a>
                     </li>
 
@@ -275,12 +239,19 @@
 
                 </ul>
             </div>
+            <div class="sosial_networks">
+                <h5 class="text-light">@lang('index.fllowUs')</h5>
 
-            <div class="footer_subscribe">
-                <h5>@lang('index.fllowUs')</h5>
-                <form class="footer_email" action="#" method="post" enctype="multipart/form-data">
-                    <input type="text" placeholder="Type your email here">
-                </form>
+                <ul class="sosial_networks_list d-flex ">
+                    @foreach(\App\Models\Social::all() as $key)
+                    <li class="sosial_network_item">
+                        <a href="{{$key->url}}">
+                            <i class="{!! $key->icon !!}"></i>
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+
             </div>
 
         </div>
@@ -304,20 +275,25 @@
             </li>
 
             <li class="mobile_h_listitem">
-                <a href="javascript:void(0)">
+                <a href="{{route('audio-books')}}">
                     @lang('index.audioBooks')
                 </a>
             </li>
 
             <li class="mobile_h_listitem">
-                <a href="javascript:void(0)">
+                <a href="{{route('collections')}}">
                     @lang('index.collections')
+                </a>
+            </li>
+            <li class="mobile_h_listitem">
+                <a href="{{route('authors')}}">
+                    @lang('index.authors')
                 </a>
             </li>
 
             <li class="mobile_h_listitem">
-                <a href="javascript:void(0)">
-                    @lang('index.onsale')
+                <a href="{{route('contact')}}" >
+                    @lang('index.contact')
                 </a>
             </li>
         </ul>
@@ -367,6 +343,9 @@
         crossorigin="anonymous"></script>
 {{-- alertify --}}
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvbhSadByJy0I5_xTAWaurfQto_f4AGFQ&callback=initMap"></script>
+
 <!-- Header JS file -->
 <script src="/assets/js/header.js"></script>
 <script src="/assets/js/swiper.js"></script>

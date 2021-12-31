@@ -10,7 +10,7 @@ class CategoryController extends Controller
     public function index($slug){
         $lang=\Config::get('app.locale');
        $data=Rl_category_books::select(['bc.name_'.$lang.' as category_name','bb.title_'.$lang.' as book_name'
-           ,'bb.img_front','bb.img_audio','bb.price','bb.discount','bb.id'])
+           ,'bb.img_front','bb.img_audio','bb.price','bb.discount','bb.id','bb.free'])
            ->leftJoin('books as bb','bb.id','=','rl_category_books.book_id')
            ->leftJoin('book_categorys as bc','bc.id','=','rl_category_books.category_id')
            ->leftJoin('category_slugs as cs','cs.category_id','=','bc.id')

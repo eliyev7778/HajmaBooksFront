@@ -15,7 +15,7 @@
         </li>
 
         <li class="aside_list_item" >
-            <a href="javascript:void(0)"> @lang('dashboard.logOut') </a>
+            <a href="{{route('logout')}}"> @lang('dashboard.logOut') </a>
         </li>
 
     </ul>

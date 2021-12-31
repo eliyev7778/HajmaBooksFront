@@ -38,13 +38,14 @@ from books as bb where id in (select book_id FROM carts where user_id=$user)");
 
     public function add_cart(Request $request)
     {
+
+        if (!Auth::user()) {
+            return [false, __("book-about.noRegister")];
+        }
         $add = Cart::firstOrCreate([
             'book_id' => $request->id,
             'user_id' => Auth::user()->id
         ]);
-        if (!Auth::user()) {
-            return [false, __("book-about.noRegister")];
-        }
         if (!$add->wasRecentlyCreated) {
             return [false, __("cart.existCart")];
         }
@@ -55,5 +56,16 @@ from books as bb where id in (select book_id FROM carts where user_id=$user)");
     {
         Cart::where("book_id", $request->id)->where("user_id", Auth::user()->id)->delete();
         return [true, __("cart.deleteSuccess")];
+    }
+
+    public function buy($id){
+        if (!Auth::user()) {
+            return back()->with("error",__("book-about.noRegister"));
+        }
+        Cart::firstOrCreate([
+           'user_id'=> Auth::user()->id,
+            'book_id'=>$id
+        ]);
+        return redirect(route('cart'));
     }
 }

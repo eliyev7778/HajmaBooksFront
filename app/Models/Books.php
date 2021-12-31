@@ -91,7 +91,7 @@ class Books extends Model
     }
     public function free_books(){
         $array_data=[];
-        $special=Books::whereNull('price')->orderBy('id','desc')->limit(5)
+        $special=Books::where('free',1)->orderBy('id','desc')->limit(5)
             ->get(['id','title_'.$this->lang.' as book_name','price','discount','img_front','img_audio','free']);
         for ($i=0; $i<count($special); $i++){
             $category=Rl_category_books::select("bc.name_$this->lang as categorys")

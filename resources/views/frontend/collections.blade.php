@@ -5,14 +5,14 @@
         <div class="center" >
             <div class="singlehead_page_in d-flex flex-column align-items-center justify-content-center  w-100 " >
                 <div class="heading_text d-flex  flex-column  h-100">
-                    <h1>collection</h1>
+                    <h1>@lang('index.collections')</h1>
                     <ul class="pass_list">
                         <li class="pass_list_item" >
-                            <a href="./index.html">Home</a>
+                            <a href="{{route('index')}}">@lang('index.home')</a>
                         </li>
 
                         <li class="pass_list_item" >
-                            <a href="javascript:void(0)">collection</a>
+                            <a href="javascript:void(0)">@lang('index.collections')</a>
                         </li>
                     </ul>
                 </div>
@@ -24,7 +24,7 @@
             <div class="collection_section_in d-flex  flex-wrap w-100">
                @foreach($data as $key)
                 <div class="collection_item" >
-                    <a href="javascript:void(0)">
+                    <a href="{{route('collection',$key->slug)}}">
                         <div class="my_container">
                             <img src="{{$key->img_vertical}}" alt="{{$key->name}}" class="image">
                             <div class="overlay">

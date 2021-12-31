@@ -40,7 +40,7 @@ class BookController extends Controller
         $comments=UserComment::select("user_comments.*", "users.img as user_img", "users.name as user_name")->
         leftJoin("users","users.id","=","user_comments.user_id")->where('book_id',$id->id)->orderByDesc('id')->get();
         $star=Star::select(DB::raw("SUM(score) as su, count(book_id) as dd"))->where("book_id",$id->id)->first();
-        $userStar=Star::where('book_id',$id->id)->where('user_id',Auth::user()->id)->first();
+        $userStar=Star::where('book_id',$id->id)->where('user_id',Auth::user()->id ?? 0)->first();
         $thisSimilar=DB::select("SELECT DISTINCT TOP 5 b.id, b.title_$book->lang as title, b.img_front, b.img_audio, b.see, b.free, b.price, b.discount
        FROM books b left join rl_category_books as rcb on rcb.book_id=b.id  where rcb.category_id in (select category_id from rl_category_books where book_id=$id->id) and b.id!=$id->id");
          $was=ReceivedBook::where('book_id',$book->id)->where('user_id',Auth::user()->id ?? 0)->first();

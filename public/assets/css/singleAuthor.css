@@ -1,0 +1,135 @@
+.single_author_section {
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.single_author_img {
+  width: 192px;
+  height: 192px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.single_author_img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.single_author_right {
+  width: 70%;
+  height: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.single_author_right .single_author_name {
+  margin-bottom: 60px;
+}
+
+.single_author_right .single_author_name h1 {
+  text-transform: capitalize;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 47px;
+  line-height: 58px;
+  color: #555963;
+}
+
+.single_author_right .single_author_name h4 {
+  text-transform: capitalize;
+  margin-top: 19px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 30px;
+  letter-spacing: 0.3px;
+  color: #555963;
+}
+
+@media (max-width: 1095px) {
+  .single_author_right .single_author_name h1 {
+    font-size: 39px;
+  }
+  .single_author_right .single_author_name h4 {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 910px) {
+  .single_author_right .single_author_name h1 {
+    font-size: 33px;
+  }
+  .single_author_right .single_author_name h4 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 785px) {
+  .single_author_right .single_author_name {
+    margin-bottom: 31px;
+  }
+}
+
+@media (max-width: 720px) {
+  .single_author_img {
+    width: 147px;
+    height: 147px;
+  }
+  .single_author_right .single_author_name {
+    margin-bottom: 21px;
+  }
+  .single_author_right .single_author_name h1 {
+    font-size: 29px;
+    line-height: 39px;
+  }
+  .single_author_right .single_author_name h4 {
+    font-size: 22px;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 545px) {
+  .single_author_right .single_author_name h1 {
+    font-size: 23px;
+    line-height: 39px;
+  }
+  .single_author_right .single_author_name h4 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .author_information {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .single_author_right {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 95%;
+  }
+  .single_author_name {
+    text-align: center;
+  }
+}
+/*# sourceMappingURL=singleAuthor.css.map */

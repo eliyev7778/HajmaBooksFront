@@ -45,5 +45,7 @@ return [
     'submit'=>'Submit',
     'fllowUs'=>'Follow us',
     'dontMissBook'=>'Don\'t miss the newest books',
-    'free'=>"Free"
+    'free'=>"Free",
+    'searchKeyword'=>'Search by keyword',
+    'SuccessSubscriber'=>'Discounts and updates will be sent to your e-mail address',
 ];

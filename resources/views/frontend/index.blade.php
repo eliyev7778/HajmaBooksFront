@@ -39,7 +39,7 @@
                                             <a class="get_deal_btn" href="{{route('book',(new \App\Models\Books())->slug($key['books']->id))}}">
                                                 @lang('index.readMore') <i class="fas fa-long-arrow-alt-right"></i>
                                             </a>
-                                            <a class="see_others" href="javascript:void(0)">
+                                            <a class="see_others" href="{{route('books')}}">
                                                 @lang('index.otherPromos')
                                             </a>
                                         </div>
@@ -250,7 +250,7 @@
             </div>
             <div class="category_inner w-100 d-flex ">
                 @foreach($category_list as $key)
-                <a href="#" target="_self">
+                <a href="{{route('category',$key->slug)}}" target="_self">
                     <div class="category_item">
                         <h4 class="category_item_title">{{$key->category_name}}</h4>
                         <p class="category_info">
@@ -344,9 +344,10 @@
                                         </span>
                                 </del>
                             </div>
+                            <a href="{{route('book',(new \App\Models\Books())->slug($costly_books[0]['books']->id))}}">
                             <button class="buy_now_btn"> @lang('index.buy') </button>
+                            </a>
                         </div>
-
                     </div>
                     <a href="{{route('book',(new \App\Models\Books())->slug($costly_books[0]['books']->id))}}" class="boks3_left_img">
                         <img src="{{$costly_books[0]['books']->img_front}}" alt="3boks_image">
@@ -447,7 +448,7 @@
                                     @endforeach
                                 </div>
                                 <div class="imdb_container w-100 d-flex justify-content-between">
-                                    <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
+                                    <span class="imdb_count"><i class="fas fa-star"></i> <span>{{(new \App\Models\Books())->star($key['books']->id)}}</span></span>
                                     <div>
                                         @if($key['books']->discount!=null)
                                             <span class="new_price"> $ {{$key['books']->discount}} </span>
@@ -570,7 +571,7 @@
                                 @endforeach
                             </div>
                             <div class="imdb_container w-100 d-flex justify-content-between">
-                                <span class="imdb_count"><i class="fas fa-star"></i> <span>4.7</span></span>
+                                <span class="imdb_count"><i class="fas fa-star"></i> <span>{{(new \App\Models\Books())->star($key['books']->id)}}</span></span>
                                 <div>
                                         <span class="new_price">@lang('index.free') </span>
                                 </div>

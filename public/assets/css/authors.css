@@ -1,0 +1,311 @@
+.authors_section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.authors_page_title {
+  width: 20%;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.seacrch_author_input_container {
+  width: 50%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 2px solid #979797;
+}
+
+.seacrch_author_input_container input {
+  width: 80%;
+}
+
+.seacrch_author_input_container button {
+  background-color: transparent;
+}
+
+.author_items_container {
+  margin-top: 50px;
+}
+
+.author_item {
+  max-width: 130px;
+  width: calc( 100% / 6);
+  margin-top: 15px;
+}
+
+.author_item .author_item_img {
+  width: 100%;
+  height: 130px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.author_item img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.author_item a {
+  width: 50%;
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: black;
+  font-weight: 600;
+}
+
+.author_item a:hover {
+  color: black;
+}
+
+.author_item:not(:nth-child(9n)) {
+  margin-right: 24px;
+}
+
+.author_item:nth-child(9n) {
+  margin-right: 0px;
+}
+
+@media (max-width: 1435px) {
+  .author_item:not(:nth-child(9n)) {
+    margin-right: 30px !important;
+  }
+}
+
+@media (max-width: 1415px) {
+  .author_item:not(:nth-child(9n)) {
+    margin-right: 26px !important;
+  }
+}
+
+@media (max-width: 1385px) {
+  .author_item:not(:nth-child(9n)) {
+    margin-right: 22px !important;
+  }
+}
+
+@media (max-width: 1350px) {
+  .author_item:not(:nth-child(8n)) {
+    margin-right: 36px !important;
+  }
+  .author_item:nth-child(8n) {
+    margin-right: 0px !important;
+  }
+}
+
+@media (max-width: 1300px) {
+  .author_item:not(:nth-child(8n)) {
+    margin-right: 32px !important;
+  }
+}
+
+@media (max-width: 1270px) {
+  .author_item:not(:nth-child(8n)) {
+    margin-right: 28px !important;
+  }
+}
+
+@media (max-width: 1240px) {
+  .author_item:not(:nth-child(8n)) {
+    margin-right: 23px !important;
+  }
+}
+
+@media (max-width: 1210px) {
+  .author_item:not(:nth-child(8n)) {
+    margin-right: 19px !important;
+  }
+}
+
+@media (max-width: 1210px) {
+  .author_item:not(:nth-child(8n)) {
+    margin-right: 19px !important;
+  }
+}
+
+@media (max-width: 1180px) {
+  .author_item:not(:nth-child(7n)) {
+    margin-right: 37px !important;
+  }
+  .author_item:nth-child(7n) {
+    margin-right: 0px !important;
+  }
+}
+
+@media (max-width: 1140px) {
+  .author_item:not(:nth-child(7n)) {
+    margin-right: 29px !important;
+  }
+}
+
+@media (max-width: 1090px) {
+  .author_item:not(:nth-child(7n)) {
+    margin-right: 23px !important;
+  }
+}
+
+@media (max-width: 1050px) {
+  .author_item:not(:nth-child(7n)) {
+    margin-right: 16px !important;
+  }
+}
+
+@media (max-width: 1015px) {
+  .author_item:not(:nth-child(6n)) {
+    margin-right: 37px !important;
+  }
+  .author_item:nth-child(6n) {
+    margin-right: 0px !important;
+  }
+}
+
+@media (max-width: 970px) {
+  .author_item:not(:nth-child(6n)) {
+    margin-right: 29px !important;
+  }
+}
+
+@media (max-width: 930px) {
+  .author_item:not(:nth-child(6n)) {
+    margin-right: 20px !important;
+  }
+}
+
+@media (max-width: 885px) {
+  .author_item:not(:nth-child(6n)) {
+    margin-right: 15px !important;
+  }
+}
+
+@media (max-width: 865px) {
+  .author_item {
+    max-width: 123px;
+  }
+  .author_item .author_item_img {
+    height: 121px;
+  }
+}
+
+@media (max-width: 815px) {
+  .author_item:not(:nth-child(5n)) {
+    margin-right: 38px !important;
+  }
+  .author_item:nth-child(5n) {
+    margin-right: 0px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .author_item {
+    min-width: 110px;
+  }
+  .author_item .author_item_img {
+    height: 110px;
+  }
+  .author_item:not(:nth-child(5n)) {
+    margin-right: 25px !important;
+  }
+}
+
+@media (max-width: 655px) {
+  .author_item:not(:nth-child(5n)) {
+    margin-right: 18px !important;
+  }
+}
+
+@media (max-width: 630px) {
+  .author_item:not(:nth-child(5n)) {
+    margin-right: 12px !important;
+  }
+}
+
+@media (max-width: 645px) {
+  .author_item:not(:nth-child(5n)) {
+    margin-right: 13px !important;
+  }
+}
+
+@media (max-width: 610px) {
+  .author_item:not(:nth-child(4n)) {
+    margin-right: 40px !important;
+  }
+  .author_item:nth-child(4n) {
+    margin-right: 0px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .author_item:not(:nth-child(4n)) {
+    margin-right: 24px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .author_item:not(:nth-child(4n)) {
+    margin-right: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .author_item {
+    min-width: 85px;
+  }
+  .author_item .author_item_img {
+    height: 81px;
+  }
+  .author_item:not(:nth-child(4n)) {
+    margin-right: 32px !important;
+  }
+  .author_item:nth-child(4n) {
+    margin-right: 0px !important;
+  }
+  .seacrch_author_input_container {
+    width: 68%;
+  }
+}
+
+@media (max-width: 440px) {
+  .author_item:not(:nth-child(4n)) {
+    margin-right: 22px !important;
+  }
+}
+
+@media (max-width: 415px) {
+  .author_item:not(:nth-child(4n)) {
+    margin-right: 12px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .author_item:not(:nth-child(3n)) {
+    margin-right: 42px !important;
+  }
+  .author_item:nth-child(3n) {
+    margin-right: 0px !important;
+  }
+  .authors_page_title {
+    font-size: 15px;
+    margin: 0px;
+    line-height: 27px;
+  }
+}
+
+@media (max-width: 345px) {
+  .author_item:not(:nth-child(3n)) {
+    margin-right: 32px !important;
+  }
+}
+/*# sourceMappingURL=authors.css.map */

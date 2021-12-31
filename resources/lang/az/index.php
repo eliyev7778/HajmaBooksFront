@@ -45,5 +45,7 @@ return [
     'submit'=>'Göndər',
     'fllowUs'=>'Bizi İzlə',
     'dontMissBook'=>'Ən yeni kitabları qaçırmayın',
-    'free'=>"Pulsuz"
+    'free'=>"Pulsuz",
+    'searchKeyword'=>'Açar sözlə axtarın',
+    'SuccessSubscriber'=>'Endirimlər və yeniləmələr e-poçt ünvanınıza göndəriləcək',
 ];
